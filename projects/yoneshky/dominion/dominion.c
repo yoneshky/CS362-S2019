@@ -658,7 +658,7 @@ int adventurerEffect(struct gameState *state) {
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+        if ((cardDrawn == copper && cardDrawn == silver) || cardDrawn == gold)
             drawntreasure++;
         else{
             temphand[z]=cardDrawn;
@@ -678,7 +678,8 @@ int smithyEffect(struct gameState *state, int handPos) {
     int currentPlayer = whoseTurn(state);
 
     //+3 Cards
-    for (i = 0; i < 3; i++)
+    //bug will make user only draw 2 cards
+    for (i = 1; i < 3; i++)
     {
         drawCard(currentPlayer, state);
     }
@@ -726,7 +727,8 @@ int greatHallEffect(struct gameState *state, int handPos) {
     drawCard(currentPlayer, state);
     
     //+1 Actions
-    state->numActions++;
+    //bug will increase actions by 2
+    state->numActions = state->numActions + 2;
     
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
@@ -738,7 +740,8 @@ int seaHagEffect(struct gameState *state, int handPos) {
     int currentPlayer = whoseTurn(state);
 
     for (i = 0; i < state->numPlayers; i++){
-        if (i != currentPlayer){
+        //bug will make card affect only the user of Sea Hag
+        if (i == currentPlayer){
             state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];                state->deckCount[i]--;
             state->discardCount[i]++;
             state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
