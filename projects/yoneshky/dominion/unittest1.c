@@ -34,7 +34,8 @@ int main() {
     
     printf("--- Testing If Two Additional Treasure Cards Are Drawn ---\n");
     adventurerEffect(&testG);
-    
+	
+	//line 38
     //initial treasure in hand count
     int initTreasureCount;
     int initCards;
@@ -45,7 +46,7 @@ int main() {
             initTreasureCount++;
         }
     }
-    
+    //line 49
     //final treasure in hand count
     int finTreasureCount;
     int finCards;
