@@ -36,7 +36,7 @@ int main() {
 	printf("line 36\n");
     adventurerEffect(&testG);
 	
-	printf("line 38\n")
+	printf("line 38\n");
     //initial treasure in hand count
     int initTreasureCount;
     int initCards;
