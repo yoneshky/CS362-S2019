@@ -120,7 +120,7 @@ int main() {
 		testG3.deck[thisPlayer][i] = estate;
 	}
 	for(i = 0; i < testG3.deckCount[thisPlayer]; i++) {
-		printf("%s\n", testG3.deck[thisPlayer][i]);
+		printf("%d\n", testG3.deck[thisPlayer][i]);
 	}
 	
 	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = adventurer;
