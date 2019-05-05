@@ -55,7 +55,7 @@ int main() {
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = smithy;
 	testG.handCount[thisPlayer]++;
 	
-    smithyEffect(&testG, testG.handCount[thisPlayer]);
+    smithyEffect(&testG, testG.handCount[thisPlayer] - 1);
 	
 	
     //initial treasure in hand count
