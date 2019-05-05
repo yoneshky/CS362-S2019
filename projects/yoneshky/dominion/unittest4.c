@@ -68,10 +68,10 @@ int main() {
 		finTopCard = testG.deck[i][state->deckCount[i]--];
 		
 		if (initTopCard == finTopCard && initTopCard != curse) {
-				printf("Player: %d, top card was not properly discarded\n", i)
+			printf("Player: %d, top card was not properly discarded\n", i);
 		}
 		else {
-				printf("Player: %d, top card was properly discarded\n", i)
+			printf("Player: %d, top card was properly discarded\n", i);
 		}
 	}
 	
@@ -81,14 +81,14 @@ int main() {
 		finTopCard = testG.deck[i][state->deckCount[i]--];
 		
 		if (curse == finTopCard) {
-			printf("Player: %d, top card was properly discarded\n", i)
+			printf("Player: %d, top card was properly discarded\n", i);
 		}
 		else if (curse == initTopCard && testG.deckCount == G.deckCount) {
-			printf("Player: %d, top card was properly discarded\n", i)
+			printf("Player: %d, top card was properly discarded\n", i);
 
 		}
 		else {
-			printf("Player: %d, top card was not properly discarded\n", i)
+			printf("Player: %d, top card was not properly discarded\n", i);
 		}
 	}
 	
