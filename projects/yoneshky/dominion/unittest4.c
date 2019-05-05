@@ -64,8 +64,8 @@ int main() {
 	int finTopCard;
 	
 	for(i = 0; i < testG.numPlayers; i++) {
-		initTopCard = G.deck[i][state->deckCount[i]--];
-		finTopCard = testG.deck[i][state->deckCount[i]--];
+		initTopCard = G.deck[i][G.deckCount[i]--];
+		finTopCard = testG.deck[i][testG.deckCount[i]--];
 		
 		if (initTopCard == finTopCard && initTopCard != curse) {
 			printf("Player: %d, top card was not properly discarded\n", i);
