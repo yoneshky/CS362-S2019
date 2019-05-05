@@ -645,13 +645,13 @@ int getCost(int cardNumber)
 }
 
 int adventurerEffect(struct gameState *state) {
-
+	printf("line 648\n");
     int currentPlayer = whoseTurn(state);
     int temphand[MAX_HAND];// moved above the if statement
     int drawntreasure=0;
     int cardDrawn;
     int z = 0;// this is the counter for the temp hand
-
+	printf("line 654\n");
     while(drawntreasure<2){
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
@@ -666,6 +666,7 @@ int adventurerEffect(struct gameState *state) {
             z++;
         }
     }
+		printf("line 669\n");
     while(z-1>=0){
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
