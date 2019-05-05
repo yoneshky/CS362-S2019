@@ -15,7 +15,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define TESTCARD "village"
+#define TESTCARD "salvager"
 
 void asserttrue(int x, int y) {
 	if(x == y) {
@@ -45,86 +45,132 @@ int main() {
     //gamestate G and testG adapted from cardtest4.c provided by instructor
     struct gameState G, testG, testG1, testG2, testG3;
     
-    int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
+    int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, salvager};
     
     initializeGame(numPlayers, k, seed, &G);
     memcpy(&testG, &G, sizeof(struct gameState));
     printf("--- Card Test On: %s ---\n", TESTCARD);
-    
-
-	//negative test on wrong hand position provided to cardEFfect
-	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = village;
+	
+	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = salvager;
 	testG.handCount[thisPlayer]++;
-	G.hand[thisPlayer][G.handCount[thisPlayer]] = village;
+	G.hand[thisPlayer][G.handCount[thisPlayer]] = salvager;
 	G.handCount[thisPlayer]++;
+	G.updateCoins(thisPlayer, &G, 0)
+	int initCoin Count = G.coins;
 	
-	cardEffect(village, 0, 0, 0, &testG, testG.handCount[thisPlayer] - 2, 0);
+	cardEffect(salvager, 0, 0, 0, &testG, testG.handCount[thisPlayer], 0);
 	
-	printf("--- Testing village Should be in Hand if Wrong HandPos given ---\n");
+	printf("--- Testing Buy Count is +1 ---\n");
+	
+	int initBuyCount = G.numBuys;
+	int finBuyCount = testG.numBuys;
+	
+	printf("Final buy count = %d, expected = %d\n", finBuyCount, initBuyCount + 1);
+	asserttrue(finBuyCount, initBuyCount + 1);
+	
+	printf("--- Testing Salvager Discard Selected Card and Cost Gain ---\n");
 	
 	//flag set if village is discarded properly
-	int vilFlag = 0;
+	int discardFlag = 0;
 	
-	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
-		if (testG.hand[thisPlayer][i] == village) {
-			printf("Village not properly discarded, test passed!\n");
-			vilFlag = -1;
-		}
-	}
-	if(vilFlag >= 0) {
-		printf("Village properly discarded, test failed!\n");
-	}
-	
-	printf("--- Boundary test On Deck with different Deck Counts ---\n");
-	printf("--- Deck has 2 cards ---\n");
+	printf("--- Choice to Discard Copper (0 Cost) ---\n");
 	memcpy(&testG1, &G, sizeof(struct gameState));
-	testG1.deckCount[thisPlayer] = 2;
 	
-	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = village;
+	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = copper;
+	testG1.handCount[thisPlayer]++;
+	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = salvager;
 	testG1.handCount[thisPlayer]++;
 	
-	if(cardEffect(village, choice1, choice2, choice3, &testG1, testG1.handCount[thisPlayer], 0) == 0) {
-		printf("Test Passed\n");
-	}
-	else {
-		printf("Test Failed\n");
+	cardEffect(salvager, handCount-2, 0, 0, &testG1, testG1.handCount[thisPlayer], 0);
+
+		if (testG1.hand[thisPlayer][5] == copper) {
+			printf("Copper Properly discarded, test passed!\n");
+			discardFlag = -1;
+		}
+	
+	if(discardFlag >= 0) {
+		printf("Copper not properly discarded, test failed!\n");
 	}
 	
-	printf("--- Deck has 1 Cards ---\n");
-	//this assumes village will be reshuffled into deck to make a deck size of 2 cards
+	printf("--- Coin Gain from Copper ---\n");
+	
+	testG1.updateCoins(thisPlayer, &testG1, 0);
+	int copperCoinCount = testG1.coins;
+	printf("Final Coin Count = %d, expected = %d\n", copperCoinCount, initCoinCount);
+	asserttrue(copperCoinCount, initCoinCount);
+	
+	printf("--- Choice to Discard Silver (3 Cost) ---\n");
 	memcpy(&testG2, &G, sizeof(struct gameState));
-	testG2.deckCount[thisPlayer] = 1;
-	
-	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = village;
+	discardFlag = 0;
+	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = silver;
+	testG2.handCount[thisPlayer]++;
+	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = salvager;
 	testG2.handCount[thisPlayer]++;
 	
-	if(cardEffect(village, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], 0) == 0) {
-		printf("Test Passed\n");
-	}
-	else {
-		printf("Test Failed\n");
+	cardEffect(salvager, handCount-2, 0, 0, &testG2, testG2.handCount[thisPlayer], 0);
+	
+	if (testG2.hand[thisPlayer][5] == silver) {
+		printf("Silver Properly discarded, test passed!\n");
+		discardFlag = -1;
 	}
 	
-	printf("--- Deck has 0 Cards ---\n");
+	if(discardFlag >= 0) {
+		printf("Silver not properly discarded, test failed!\n");
+	}
+	
+	printf("--- Coin Gain from Silver ---\n");
+	
+	testG2.updateCoins(thisPlayer, &testG2, 0);
+	int silverCoinCount = testG2.coins;
+	printf("Final Coin Count = %d, expected = %d\n", silverCoinCount, initCoinCount + 3);
+	asserttrue(silverCoinCount, initCoinCount + 3);
+	
+	printf("--- Choice to Discard Gold (6 Cost) ---\n");
 	memcpy(&testG3, &G, sizeof(struct gameState));
-	testG3.deckCount[thisPlayer] = 0;
-	
-	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = village;
+	discardFlag = 0;
+	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = gold;
+	testG3.handCount[thisPlayer]++;
+	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = salvager;
 	testG3.handCount[thisPlayer]++;
 	
-	if(cardEffect(village, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], 0) == 0) {
-		printf("Test Passed\n");
-	}
-	else {
-		printf("Test Failed\n");
+	cardEffect(salvager, handCount-2, 0, 0, &testG3, testG3.handCount[thisPlayer], 0);
+	
+	if (testG3.hand[thisPlayer][5] == gold) {
+		printf("Gold Properly discarded, test passed!\n");
+		discardFlag = -1;
 	}
 	
-	//positive tests
+	if(discardFlag >= 0) {
+		printf("Gold not properly discarded, test failed!\n");
+	}
+	
+	printf("--- Coin Gain from Gold ---\n");
+	
+	testG3.updateCoins(thisPlayer, &testG3, 0);
+	int goldCoinCount = testG3.coins;
+	printf("Final Coin Count = %d, expected = %d\n", goldCoinCount, initCoinCount + 6);
+	asserttrue(goldCoinCount, initCoinCount + 6);
+	
+	printf("--- Testing Salvager Not in Hand Anymore ---\n");
+	
+	//flag set if salvage is discarded properly
+	int salvageFlag = 0;
+	
+	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
+		if (testG.hand[thisPlayer][i] == great_hall) {
+			printf("salvager not properly discarded\n");
+			salvageFlag = -1;
+		}
+	}
+	if(salvageFlag >= 0) {
+		printf("salvage properly discarded\n");
+	}
+
 	printf("--- Testing Hand Count is Correct ---\n");
 	int initHandCount = G.handCount[thisPlayer];
 	int finHandCount = testG.handCount[thisPlayer];
 	
-	printf("Hand count = %d, expected = %d\n", finHandCount, initHandCount);
+	printf("Hand count = %d, expected = %d\n", finHandCount, initHandCount - 2);
 	asserttrue(initHandCount, finHandCount);
 	
 	printf("--- Testing Deck Count is 1 less than starting ---\n");
@@ -135,21 +181,13 @@ int main() {
 	printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount - 1);
 	asserttrue(finDeckCount, initDeckCount - 1);
 	
-	printf("--- Testing Action Count is 3 ---\n");
+	printf("--- Testing Action Count is unchanged---\n");
 	
 	int initNumActions = G.numActions;
 	int finNumActions = testG.numActions;
 	
-	printf("Final number of actions = %d, expected = %d\n", finNumActions, initNumActions + 2);
-	asserttrue(finNumActions, initNumActions + 2);
-	
-	printf("--- Testing Buy Count is unchanged ---\n");
-	
-	int initBuyCount = G.numBuys;
-	int finBuyCount = testG.numBuys;
-	
-	printf("Final buy count = %d, expected = %d\n", finBuyCount, initBuyCount);
-	asserttrue(finBuyCount, initBuyCount);
+	printf("Final number of actions = %d, expected = %d\n", finNumActions, initNumActions);
+	asserttrue(finNumActions, initNumActions);
 	
 	printf("--- Testing No State Change for Other Player ---\n");
 	
@@ -230,7 +268,7 @@ int main() {
 	printf("Gold Supply Count = %d, expected = %d\n", finGoldCount, initGoldCount);
 	asserttrue(finGoldCount, initGoldCount);
 	
-    printf("--- Card Test 3 Complete! ---\n");
+    printf("--- Card Test 4 Complete! ---\n");
 	
 	
     return 0;
