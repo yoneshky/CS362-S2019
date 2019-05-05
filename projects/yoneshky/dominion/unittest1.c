@@ -17,6 +17,23 @@
 
 #define TESTCARD "adventurer"
 
+void asserttrue(int x, int y) {
+	if(x == y) {
+		printf("Assertion Passed\n");
+	}
+	else {
+		printf("Assertion Failed\n");
+	}
+}
+
+void assertlessequals(int x, int y) {
+	if(x <= y) {
+		printf("Assertion Passed\n");
+	}
+	else {
+		printf("Assertion Failed\n");
+	}
+}
 
 int main() {
     int i, j, m;
@@ -33,10 +50,10 @@ int main() {
     printf("--- Unit Test On: %s ---\n", TESTCARD);
     
     printf("--- Testing If Two Additional Treasure Cards Are Drawn ---\n");
-	printf("line 36\n");
+	
     adventurerEffect(&testG);
 	
-	printf("line 38\n");
+	
     //initial treasure in hand count
     int initTreasureCount;
     int initCards;
@@ -47,7 +64,7 @@ int main() {
             initTreasureCount++;
         }
     }
-	printf("line 49\n");
+
     //line 49
     //final treasure in hand count
     int finTreasureCount;
@@ -61,16 +78,16 @@ int main() {
     }
     
     printf("Drawn treasure count = %d, expected = %d\n", finTreasureCount - initTreasureCount, 2);
-	//assert(finTreasureCount == 2);
+	asserttrue(finTreasureCount, 2);
 	
-	printf("line 66\n");
+	
     printf("Testing Deck Count is at least 2 Less Than Starting Count\n");
     
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
     
     printf("Final Deck Count = %d, expected (at most) = %d\n", finDeckCount, initDeckCount - 2);
-    assert(finDeckCount <= initDeckCount - 2);
+    assertlessequals(finDeckCount, initDeckCount - 2);
     
     printf("Testing Hand Count Is 2 More Than Starting Hand\n");
     
@@ -78,7 +95,7 @@ int main() {
     int finHandCount = testG.handCount[thisPlayer];
     
     printf("Final Hand Count = %d, expected = %d\n", finHandCount, initHandCount + 1);
-    //assert(finHandCount == (initHandCount + 1));
+    asserttrue(finHandCount, (initHandCount + 1));
     
     printf("Testing No State Change for Other Player\n");
     
@@ -86,13 +103,13 @@ int main() {
     int finHandCountPlayer2 = testG.handCount[thisPlayer+1];
     
     printf("Other Player Hand Count = %d, expected = %d\n", finHandCountPlayer2, initHandCountPlayer2);
-    assert(finHandCountPlayer2 == initHandCountPlayer2);
+    asserttrue(finHandCountPlayer2, initHandCountPlayer2);
     
     int initDeckCountPlayer2 = G.deckCount[thisPlayer+1];
     int finDeckCountPlayer2 = testG.deckCount[thisPlayer+1];
     
     printf("Other Player Deck Count = %d, expected = %d\n", finDeckCountPlayer2, initDeckCountPlayer2);
-    assert(finDeckCountPlayer2 == initDeckCountPlayer2);
+    asserttrue(finDeckCountPlayer2, initDeckCountPlayer2);
     
     
     printf("Testing No State Change for Victory Card Pile and Kingdom Card Pile\n");
@@ -117,7 +134,8 @@ int main() {
     }
 	printf("Testing if each kingdom supply is unchanged\n");
 	for(i = 0; i < 10; i++) {
-    	assert(initKingdomCount[i] = finKingdomCount[i]);
+		printf("kingdom card: %d\n", i);
+    	asserttrue(initKingdomCount[i], finKingdomCount[i]);
 	}
 	printf("Kingdom Supply unchanged\n");
     
@@ -130,13 +148,13 @@ int main() {
     int finProvinceCount = testG.supplyCount[province];
     
     printf("Estate Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
-    assert(finEstateCount == initEstateCount);
+    asserttrue(finEstateCount, initEstateCount);
     
     printf("Duchy Supply Count = %d, expected = %d\n", finDuchyCount, initDuchyCount);
-    assert(finDuchyCount == initDuchyCount);
+    asserttrue(finDuchyCount, initDuchyCount);
     
     printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
-    assert(finProvinceCount == initProvinceCount);
+    asserttrue(finProvinceCount, initProvinceCount);
     
     printf("--- Unit Test 1 Complete! ---\n");
     
