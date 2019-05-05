@@ -98,7 +98,7 @@ int main() {
     
     for(i = adventurer; i <= treasure_map; i++) {
             for(j = 0; j < 10; j++) {
-                if(kingdomCards[j] == i) {
+                if(k[j] == i) {
                     initKingdomCount[j] = G.supplyCount[i];
                 }
             }
@@ -106,13 +106,15 @@ int main() {
     
     for(i = adventurer; i <= treasure_map; i++) {
         for(j = 0; j < 10; j++) {
-            if(kingdomCards[j] == i) {
+            if(k[j] == i) {
                 finKingdomCount[j] = testG.supplyCount[i];
             }
         }
     }
-    
-    assert(initKingdomCount = finKingdomCount);
+	
+	for(i = 0; i < 10; i++) {
+    	assert(initKingdomCount[i] = finKingdomCount[i]);
+	}
     
     int initEstateCount = G.supplyCount[estate];
     int initDuchyCount = G.supplyCount[duchy];
