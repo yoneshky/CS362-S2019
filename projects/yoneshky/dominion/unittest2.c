@@ -70,18 +70,24 @@ int main() {
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
     
-    printf("Final Deck Count = %d, expected (at most) = %d\n", finDeckCount, initDeckCount);
+    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount);
     asserttrue(finDeckCount, initDeckCount - 3);
     
     printf("Testing Smithy Not in Hand Anymore\n");
-    
+	
+	//flag set if smithy is discarded properly
+	int smithyFlag = 0;
+	
 	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
 		if (testG.hand[thisPlayer][i] == smithy) {
 			printf("Smithy not properly discarded\n");
+			smithFlag = -1;
+			return;
 		}
 	}
-	
-	printf("Smithy properly discarded\n");
+	if(smithFlag >= 0) {
+		printf("Smithy properly discarded\n");
+	}
     
     printf("Testing No State Change for Other Player\n");
     
