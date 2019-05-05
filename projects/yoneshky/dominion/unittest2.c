@@ -36,7 +36,7 @@ void assertlessequals(int x, int y) {
 }
 
 int main() {
-    int i;
+	int i, j;
     int seed = 1000;
     int numPlayers = 2;
     int thisPlayer = 0;
