@@ -54,6 +54,8 @@ int main() {
 	//mimic smithy draw to use hand pos for smithy effect
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = smithy;
 	testG.handCount[thisPlayer]++;
+	G.hand[thisPlayer][testG.handCount[thisPlayer]] = smithy;
+	G.handCount[thisPlayer]++;
 	
     smithyEffect(&testG, testG.handCount[thisPlayer] - 1);
 	
