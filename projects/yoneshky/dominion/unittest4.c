@@ -63,7 +63,7 @@ int main() {
 	int initTopCard;
 	int finTopCard;
 	
-	for(i = 0; i < testG.numPlayers; i++) {
+	for(i = 0; i < numPlayers; i++) {
 		initTopCard = G.deck[i][G.deckCount[i]--];
 		finTopCard = testG.deck[i][testG.deckCount[i]--];
 		
