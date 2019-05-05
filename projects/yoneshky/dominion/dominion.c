@@ -778,8 +778,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      adventurerEffect(state);
-			return;
+      return adventurerEffect(state);
+			
 			
     case council_room:
       //+4 Cards

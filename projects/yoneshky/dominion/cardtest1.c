@@ -88,7 +88,7 @@ int main() {
 	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = adventurer;
 	testG1.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG1, testG1.handCount[thisPlayer], 0)) {
+	if(cardEffect(adventurer, choice1, choice2, choice3, &testG1, testG1.handCount[thisPlayer], 0) == 0) {
 		printf("Test Passed\n");
 	}
 	else {
@@ -107,7 +107,7 @@ int main() {
 	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = adventurer;
 	testG2.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], 0)) {
+	if(cardEffect(adventurer, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], 0) == 0) {
 		printf("Test Passed\n");
 	}
 	else {
@@ -124,7 +124,7 @@ int main() {
 	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = adventurer;
 	testG3.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], 0)) {
+	if(cardEffect(adventurer, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], 0) == 0) {
 		printf("Test Passed\n");
 	}
 	else {
