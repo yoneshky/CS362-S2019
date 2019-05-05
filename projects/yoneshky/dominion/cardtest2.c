@@ -80,7 +80,7 @@ int main() {
 	memcpy(&testG1, &G, sizeof(struct gameState));
 	testG1.deckCount[thisPlayer] = 4;
 	
-	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = adventurer;
+	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = smithy;
 	testG1.handCount[thisPlayer]++;
 	
 	if(cardEffect(smithy, choice1, choice2, choice3, &testG1, testG1.handCount[thisPlayer], 0) == 0) {
@@ -95,10 +95,10 @@ int main() {
 	memcpy(&testG2, &G, sizeof(struct gameState));
 	testG2.deckCount[thisPlayer] = 2;
 	
-	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = adventurer;
+	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = smithy;
 	testG2.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], 0) == 0) {
+	if(cardEffect(village, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], 0) == 0) {
 		printf("Test Passed\n");
 	}
 	else {
@@ -109,10 +109,10 @@ int main() {
 	memcpy(&testG3, &G, sizeof(struct gameState));
 	testG3.deckCount[thisPlayer] = 0;
 	
-	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = adventurer;
+	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = smithy;
 	testG3.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], 0) == 0) {
+	if(cardEffect(village, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], 0) == 0) {
 		printf("Test Passed\n");
 	}
 	else {
