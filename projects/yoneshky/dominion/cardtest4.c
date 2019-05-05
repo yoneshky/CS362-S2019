@@ -96,7 +96,7 @@ int main() {
 	
 	updateCoins(thisPlayer, &testG1, 0);
 	int copperCoinCount = testG1.coins;
-	printf("Final Coin Count = %d, expected = %d\n", copperCoinCount, initCoinCount);
+	printf("Final Coin Count = %d, expected = %d\n", copperCoinCount, initCoin);
 	asserttrue(copperCoinCount, initCoinCount);
 	
 	printf("--- Choice to Discard Silver (3 Cost) ---\n");
@@ -122,7 +122,7 @@ int main() {
 	
 	updateCoins(thisPlayer, &testG2, 0);
 	int silverCoinCount = testG2.coins;
-	printf("Final Coin Count = %d, expected = %d\n", silverCoinCount, initCoinCount + 3);
+	printf("Final Coin Count = %d, expected = %d\n", silverCoinCount, initCoin + 3);
 	asserttrue(silverCoinCount, initCoinCount + 3);
 	
 	printf("--- Choice to Discard Gold (6 Cost) ---\n");
@@ -148,7 +148,7 @@ int main() {
 	
 	updateCoins(thisPlayer, &testG3, 0);
 	int goldCoinCount = testG3.coins;
-	printf("Final Coin Count = %d, expected = %d\n", goldCoinCount, initCoinCount + 6);
+	printf("Final Coin Count = %d, expected = %d\n", goldCoinCount, initCoin + 6);
 	asserttrue(goldCoinCount, initCoinCount + 6);
 	
 	printf("--- Testing Salvager Not in Hand Anymore ---\n");
