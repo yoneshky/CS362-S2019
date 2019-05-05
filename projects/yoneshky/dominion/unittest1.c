@@ -104,7 +104,6 @@ int main() {
             for(j = 0; j < 10; j++) {
                 if(k[j] == i) {
                     initKingdomCount[j] = G.supplyCount[i];
-					printf("%d\n", initKingdomCount[j]);
                 }
             }
     }
@@ -113,11 +112,10 @@ int main() {
         for(j = 0; j < 10; j++) {
             if(k[j] == i) {
                 finKingdomCount[j] = testG.supplyCount[i];
-				printf("%d\n", finKingdomCount[j]);
             }
         }
     }
-	
+	printf("Testing if each kingdom supply is unchanged\n");
 	for(i = 0; i < 10; i++) {
     	assert(initKingdomCount[i] = finKingdomCount[i]);
 	}
