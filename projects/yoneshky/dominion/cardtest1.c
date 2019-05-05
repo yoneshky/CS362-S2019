@@ -88,8 +88,11 @@ int main() {
 	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = adventurer;
 	testG1.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG1, testG1.handCount[thisPlayer], &bonus)) {
+	if(cardEffect(adventurer, choice1, choice2, choice3, &testG1, testG1.handCount[thisPlayer], 0)) {
 		printf("Test Passed\n");
+	}
+	else {
+		printf("Test Failed\n");
 	}
 	
 	printf("--- Deck has 3 Treasure ---\n");
@@ -104,8 +107,11 @@ int main() {
 	testG2.hand[thisPlayer][testG2.handCount[thisPlayer]] = adventurer;
 	testG2.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], &bonus)) {
+	if(cardEffect(adventurer, choice1, choice2, choice3, &testG2, testG2.handCount[thisPlayer], 0)) {
 		printf("Test Passed\n");
+	}
+	else {
+		printf("Test Failed\n");
 	}
 	
 	printf("--- Deck has 0 Treasure ---\n");
@@ -113,12 +119,16 @@ int main() {
 	for(i = 0; i < testG3.deckCount[thisPlayer]; i++) {
 		testG3.deck[thisPlayer][i] = estate;
 	}
+
 	
 	testG3.hand[thisPlayer][testG3.handCount[thisPlayer]] = adventurer;
 	testG3.handCount[thisPlayer]++;
 	
-	if(cardEffect(adventurer, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], &bonus)) {
+	if(cardEffect(adventurer, choice1, choice2, choice3, &testG3, testG3.handCount[thisPlayer], 0)) {
 		printf("Test Passed\n");
+	}
+	else {
+		printf("Test Failed\n");
 	}
 	
     printf("--- Card Test 1 Complete! ---\n");
