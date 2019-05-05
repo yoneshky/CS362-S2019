@@ -232,6 +232,7 @@ int main() {
 	asserttrue(finGoldCount, initGoldCount);
 	
     printf("--- Card Test 3 Complete! ---\n");
-    
+	
+	
     return 0;
 }
