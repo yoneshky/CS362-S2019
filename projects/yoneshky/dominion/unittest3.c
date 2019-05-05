@@ -3,7 +3,7 @@
  * Include the following lines in your makefile:
  *
  * unittest3: unittest3.c dominion.o rngs.o
- *      gcc -o unittest1 -g  unittest3.c dominion.o rngs.o $(CFLAGS)
+ *      gcc -o unittest3 -g  unittest3.c dominion.o rngs.o $(CFLAGS)
  */
 
 #include "dominion.h"
