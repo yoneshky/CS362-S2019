@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 
 #define TESTCARD "adventurer"
 
@@ -55,7 +57,7 @@ int main() {
         }
     }
     
-    printf("Drawn treasure count = %d, expected = %d\n", finTreasureCount - initTreasureCount, 2)
+    printf("Drawn treasure count = %d, expected = %d\n", finTreasureCount - initTreasureCount, 2);
     assert(finTreasureCount == 2);
     
     printf("Testing Deck Count is at least 2 Less Than Starting Count\n");
@@ -94,17 +96,17 @@ int main() {
     int initKingdomCount[10];
     int finKingdomCount[10];
     
-    for(i = adventurer, i <= treasure_map; i++) {
+    for(i = adventurer; i <= treasure_map; i++) {
             for(j = 0; j < 10; j++) {
-                if(kingdomCards[j] == i) {
+                if(*kingdomCards[j] == i) {
                     initKingdomCount[j] = G.supplyCount[i];
                 }
             }
     }
     
-    for(i = adventurer, i <= treasure_map; i++) {
+    for(i = adventurer; i <= treasure_map; i++) {
         for(j = 0; j < 10; j++) {
-            if(kingdomCards[j] == i) {
+            if(*kingdomCards[j] == i) {
                 finKingdomCount[j] = testG.supplyCount[i];
             }
         }
