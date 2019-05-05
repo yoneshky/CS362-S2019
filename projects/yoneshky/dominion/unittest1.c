@@ -66,7 +66,7 @@ int main() {
     int finDeckCount = testG.deckCount[thisPlayer];
     
     printf("Final Deck Count = %d, expected (at most) = %d\n", finDeckCount, initDeckCount - 2);
-    assert(finDeckCount =< initDeckCount - 2);
+    assert(finDeckCount <= initDeckCount - 2);
     
     printf("Testing Hand Count Is 2 More Than Starting Hand\n");
     
