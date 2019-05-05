@@ -51,19 +51,14 @@ int main() {
     memcpy(&testG, &G, sizeof(struct gameState));
     printf("--- Card Test On: %s ---\n", TESTCARD);
     
-    printf("--- Testing If Two Additional Treasure Cards Are Drawn ---\n");
+
 	//negative test on wrong hand position provided to cardEFfect
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = adventurer;
 	testG.handCount[thisPlayer]++;
 	G.hand[thisPlayer][G.handCount[thisPlayer]] = adventurer;
 	G.handCount[thisPlayer]++;
 	
-	choice1 = 0;
-	choice2 = 0;
-	choice3 = 0;
-	*bonus = 0;
-	
-	cardEffect(adventurer, choice1, choice2, choice3, &testG, testG.handCount[thisPlayer] -2, &bonus);
+	cardEffect(adventurer, 0, 0, 0, &testG, testG.handCount[thisPlayer] - 2, 0);
 	
 	printf("--- Testing Adveturer Should be in Hand if Wrong HandPos given ---\n");
 	
