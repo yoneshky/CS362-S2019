@@ -139,22 +139,43 @@ int main() {
 	}
 	printf("Kingdom Supply unchanged\n");
     
-    int initEstateCount = G.supplyCount[estate];
-    int initDuchyCount = G.supplyCount[duchy];
-    int initProvinceCount = G.supplyCount[province];
-    
-    int finEstateCount = testG.supplyCount[estate];
-    int finDuchyCount = testG.supplyCount[duchy];
-    int finProvinceCount = testG.supplyCount[province];
-    
-    printf("Estate Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
-    asserttrue(finEstateCount, initEstateCount);
-    
-    printf("Duchy Supply Count = %d, expected = %d\n", finDuchyCount, initDuchyCount);
-    asserttrue(finDuchyCount, initDuchyCount);
-    
-    printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
-    asserttrue(finProvinceCount, initProvinceCount);
+	printf("Testing if each victory supply is unchanged\n");
+	
+	int initEstateCount = G.supplyCount[estate];
+	int initDuchyCount = G.supplyCount[duchy];
+	int initProvinceCount = G.supplyCount[province];
+	
+	int finEstateCount = testG.supplyCount[estate];
+	int finDuchyCount = testG.supplyCount[duchy];
+	int finProvinceCount = testG.supplyCount[province];
+	
+	printf("Estate Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
+	asserttrue(finEstateCount, initEstateCount);
+	
+	printf("Duchy Supply Count = %d, expected = %d\n", finDuchyCount, initDuchyCount);
+	asserttrue(finDuchyCount, initDuchyCount);
+	
+	printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
+	asserttrue(finProvinceCount, initProvinceCount);
+	
+	printf("Testing if each treasure supply is unchanged\n");
+	
+	int initCopperCount = G.supplyCount[copper];
+	int initSilverCount = G.supplyCount[silver];
+	int initGoldCount = G.supplyCount[gold];
+	
+	int finCopperCount = testG.supplyCount[copper];
+	int finSilverCount = testG.supplyCount[silver];
+	int finGoldCount = testG.supplyCount[gold];
+	
+	printf("Copper Supply Count = %d, expected = %d\n", finCopperCount, initCopperCount);
+	asserttrue(finCopperCount, initCopperCount);
+	
+	printf("Silver Supply Count = %d, expected = %d\n", finSilverCount, initSilverCount);
+	asserttrue(finSilverCount, initSilverCount);
+	
+	printf("Gold Supply Count = %d, expected = %d\n", finGoldCount, initGoldCount);
+	asserttrue(finGoldCount, initGoldCount);
     
     printf("--- Unit Test 1 Complete! ---\n");
     

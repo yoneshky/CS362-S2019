@@ -2,8 +2,8 @@
 /* Adapted from cardtest4.c provided by professor
  * Include the following lines in your makefile:
  *
- * unittest3: unittest3.c dominion.o rngs.o
- *      gcc -o unittest3 -g  unittest3.c dominion.o rngs.o $(CFLAGS)
+ * unittest4: unittest4.c dominion.o rngs.o
+ *      gcc -o unittest4 -g  unittest4.c dominion.o rngs.o $(CFLAGS)
  */
 
 #include "dominion.h"
@@ -15,7 +15,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define TESTCARD "great_hall"
+#define TESTCARD "sea_hag"
 
 void asserttrue(int x, int y) {
 	if(x == y) {
@@ -50,53 +50,92 @@ int main() {
     memcpy(&testG, &G, sizeof(struct gameState));
     printf("--- Unit Test On: %s ---\n", TESTCARD);
     
-    printf("--- Testing If One Card is Drawn ---\n");
+    printf("--- Testing Top card is Discarded ---\n");
 	
-	//mimic great_hall draw to use hand pos for greatHall effect
-	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = great_hall;
+	//mimic sea_hag draw to use hand pos for seaHag effect
+	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = sea_hag;
 	testG.handCount[thisPlayer]++;
-	G.hand[thisPlayer][testG.handCount[thisPlayer]] = great_hall;
+	G.hand[thisPlayer][testG.handCount[thisPlayer]] = sea_hag;
 	G.handCount[thisPlayer]++;
 	
-    greatHallEffect(&testG, testG.handCount[thisPlayer] - 1);
+    seaHagEffect(&testG, testG.handCount[thisPlayer] - 1);
+	
+	int initTopCard;
+	int finTopCard;
+	
+	for(i = 0; i < testG.numPlayers; i++) {
+		initTopCard = G.deck[i][state->deckCount[i]--];
+		finTopCard = testG.deck[i][state->deckCount[i]--];
+		
+		if (initTopCard == finTopCard && initTopCard != curse) {
+				printf("Player: %d, top card was not properly discarded\n", i)
+		}
+		else {
+				printf("Player: %d, top card was properly discarded\n", i)
+		}
+	}
+	
+	printf("Testing Top of Deck is Curse\n");
+	for(i = 0; i < testG.numPlayers; i++) {
+		initTopCard = G.deck[i][state->deckCount[i]--];
+		finTopCard = testG.deck[i][state->deckCount[i]--];
+		
+		if (curse == finTopCard) {
+			printf("Player: %d, top card was properly discarded\n", i)
+		}
+		else if (curse == initTopCard && testG.deckCount == G.deckCount) {
+			printf("Player: %d, top card was properly discarded\n", i)
+
+		}
+		else {
+			printf("Player: %d, top card was not properly discarded\n", i)
+		}
+	}
 	
 	
-    //initial treasure in hand count
-    int initHandCount = G.handCount[thisPlayer];
-	int finHandCount = testG.handCount[thisPlayer];
-	
-	printf("Hand count = %d, expected = %d\n", finHandCount, initHandCount);
-	asserttrue(initHandCount, finHandCount);
-	
-    printf("Testing Deck Count is 1 less than starting\n");
+    printf("Testing Deck Count is The Same as Starting\n");
     
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
     
-    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount - 1);
-    asserttrue(finDeckCount, initDeckCount - 1);
+    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount);
+    asserttrue(finDeckCount, initDeckCount);
+	
+	printf("Testing Curse Supply is Less Than Starting\n");
+	
+	int initCurseSupply = G.supplyCount[curse];
+	int finCurseSupply = testG.supplyCount[curse];
+	
+	if(initCurseSupply <= numPlayers) {
+		printf("Final Curse Supply Count = %d, expected = %d\n", finCurseSupply, 0);
+		asserttrue(finCurseSupply, 0);
+	}
+	else {
+		printf("Final Curse Supply Count = %d, expected = %d\n", finCurseSupply, initCurseSupply-numPlayers);
+		asserttrue(finCurseSupply, initCurseSupply-numPlayers);
+	}
     
     printf("Testing Great Hall Not in Hand Anymore\n");
 	
-	//flag set if great hall is discarded properly
-	int greatHallFlag = 0;
+	//flag set if sea hag is discarded properly
+	int seaHagFlag = 0;
 	
 	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
-		if (testG.hand[thisPlayer][i] == great_hall) {
-			printf("Great Hall not properly discarded\n");
-			greatHallFlag = -1;
+		if (testG.hand[thisPlayer][i] == sea_hag) {
+			printf("Sea Hag not properly discarded\n");
+			seaHagFlag = -1;
 		}
 	}
-	if(greatHallFlag >= 0) {
-		printf("Great Hall properly discarded\n");
+	if(seaHagFlag >= 0) {
+		printf("Sea Hag properly discarded\n");
 	}
 	
-	printf("Testing Action Count is 2\n");
+	printf("Testing Action Count is 1\n");
 	
 	int initNumActions = G.numActions;
 	int finNumActions = testG.numActions;
 	
-	printf("Final number of actions = %d, expected = %d\n", finNumActions, initNumActions + 1);
+	printf("Final number of actions = %d, expected = %d\n", finNumActions, initNumActions);
 	asserttrue(finNumActions, initNumActions);
 	
 	printf("Testing Buy Count is unchanged\n");
@@ -148,26 +187,26 @@ int main() {
     	asserttrue(initKingdomCount[i], finKingdomCount[i]);
 	}
 	printf("Kingdom Supply unchanged\n");
-    
+	
 	printf("Testing if each victory supply is unchanged\n");
 	
-	int initEstateCount = G.supplyCount[estate];
-	int initDuchyCount = G.supplyCount[duchy];
-	int initProvinceCount = G.supplyCount[province];
-	
-	int finEstateCount = testG.supplyCount[estate];
-	int finDuchyCount = testG.supplyCount[duchy];
-	int finProvinceCount = testG.supplyCount[province];
-	
-	printf("Estate Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
-	asserttrue(finEstateCount, initEstateCount);
-	
-	printf("Duchy Supply Count = %d, expected = %d\n", finDuchyCount, initDuchyCount);
-	asserttrue(finDuchyCount, initDuchyCount);
-	
-	printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
-	asserttrue(finProvinceCount, initProvinceCount);
-	
+    int initEstateCount = G.supplyCount[estate];
+    int initDuchyCount = G.supplyCount[duchy];
+    int initProvinceCount = G.supplyCount[province];
+    
+    int finEstateCount = testG.supplyCount[estate];
+    int finDuchyCount = testG.supplyCount[duchy];
+    int finProvinceCount = testG.supplyCount[province];
+    
+    printf("Estate Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
+    asserttrue(finEstateCount, initEstateCount);
+    
+    printf("Duchy Supply Count = %d, expected = %d\n", finDuchyCount, initDuchyCount);
+    asserttrue(finDuchyCount, initDuchyCount);
+    
+    printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
+    asserttrue(finProvinceCount, initProvinceCount);
+
 	printf("Testing if each treasure supply is unchanged\n");
 	
 	int initCopperCount = G.supplyCount[copper];
@@ -187,7 +226,7 @@ int main() {
 	printf("Gold Supply Count = %d, expected = %d\n", finGoldCount, initGoldCount);
 	asserttrue(finGoldCount, initGoldCount);
     
-    printf("--- Unit Test 3 Complete! ---\n");
+    printf("--- Unit Test 4 Complete! ---\n");
     
     return 0;
 }
