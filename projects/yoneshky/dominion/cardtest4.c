@@ -55,7 +55,7 @@ int main() {
 	testG.handCount[thisPlayer]++;
 	G.hand[thisPlayer][G.handCount[thisPlayer]] = salvager;
 	G.handCount[thisPlayer]++;
-	G.updateCoins(thisPlayer, &G, 0)
+	updateCoins(thisPlayer, &G, 0)
 	int initCoin Count = G.coins;
 	
 	cardEffect(salvager, 0, 0, 0, &testG, testG.handCount[thisPlayer], 0);
@@ -94,7 +94,7 @@ int main() {
 	
 	printf("--- Coin Gain from Copper ---\n");
 	
-	testG1.updateCoins(thisPlayer, &testG1, 0);
+	updateCoins(thisPlayer, &testG1, 0);
 	int copperCoinCount = testG1.coins;
 	printf("Final Coin Count = %d, expected = %d\n", copperCoinCount, initCoinCount);
 	asserttrue(copperCoinCount, initCoinCount);
@@ -120,7 +120,7 @@ int main() {
 	
 	printf("--- Coin Gain from Silver ---\n");
 	
-	testG2.updateCoins(thisPlayer, &testG2, 0);
+	updateCoins(thisPlayer, &testG2, 0);
 	int silverCoinCount = testG2.coins;
 	printf("Final Coin Count = %d, expected = %d\n", silverCoinCount, initCoinCount + 3);
 	asserttrue(silverCoinCount, initCoinCount + 3);
@@ -146,7 +146,7 @@ int main() {
 	
 	printf("--- Coin Gain from Gold ---\n");
 	
-	testG3.updateCoins(thisPlayer, &testG3, 0);
+	updateCoins(thisPlayer, &testG3, 0);
 	int goldCoinCount = testG3.coins;
 	printf("Final Coin Count = %d, expected = %d\n", goldCoinCount, initCoinCount + 6);
 	asserttrue(goldCoinCount, initCoinCount + 6);
