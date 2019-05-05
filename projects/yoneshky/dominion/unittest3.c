@@ -35,6 +35,7 @@ void assertlessequals(int x, int y) {
 	}
 }
 
+
 int main() {
 	int i, j;
     int seed = 1000;
