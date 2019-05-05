@@ -81,26 +81,22 @@ int main() {
 		finTopCard = testG.deck[i][testG.deckCount[i]--];
 		
 		if (finTopCard == curse) {
-			printf("Player: %d, top card was properly discarded\n", i);
-		}
-		else if (initTopCard == curse && testG.deckCount == G.deckCount) {
-			printf("Player: %d, top card was properly discarded\n", i);
-
+			printf("Player: %d, top card is curse\n", i);
 		}
 		else {
-			printf("Player: %d, top card was not properly discarded\n", i);
+			printf("Player: %d, top card is not curse\n", i);
 		}
 	}
 	
 	
     printf("--- Testing Deck Count is The Same as Starting ---\n");
+	for(i = 0; i < numPlayers; i++) {
+    	int initDeckCount = G.deckCount[i];
+    	int finDeckCount = testG.deckCount[i];
     
-    int initDeckCount = G.deckCount[thisPlayer];
-    int finDeckCount = testG.deckCount[thisPlayer];
-    
-    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount);
-    asserttrue(finDeckCount, initDeckCount);
-	
+		printf("Final Deck Count for Player: %d = %d, expected = %d\n", i, finDeckCount, initDeckCount);
+    	asserttrue(finDeckCount, initDeckCount);
+	}
 	printf("--- Testing Curse Supply is Same as Starting ---\n");
 	
 	int initCurseSupply = G.supplyCount[curse];
@@ -147,13 +143,6 @@ int main() {
     
     printf("Other Player Hand Count = %d, expected = %d\n", finHandCountPlayer2, initHandCountPlayer2);
     asserttrue(finHandCountPlayer2, initHandCountPlayer2);
-    
-    int initDeckCountPlayer2 = G.deckCount[thisPlayer+1];
-    int finDeckCountPlayer2 = testG.deckCount[thisPlayer+1];
-    
-    printf("Other Player Deck Count = %d, expected = %d\n", finDeckCountPlayer2, initDeckCountPlayer2);
-    asserttrue(finDeckCountPlayer2, initDeckCountPlayer2);
-    
     
     printf("--- Testing No State Change for Victory Card Pile and Kingdom Card Pile ---\n");
     
