@@ -77,8 +77,8 @@ int main() {
 	
 	printf("Testing Top of Deck is Curse\n");
 	for(i = 0; i < testG.numPlayers; i++) {
-		initTopCard = G.deck[i][state->deckCount[i]--];
-		finTopCard = testG.deck[i][state->deckCount[i]--];
+		initTopCard = G.deck[i][G.deckCount[i]--];
+		finTopCard = testG.deck[i][testG.deckCount[i]--];
 		
 		if (curse == finTopCard) {
 			printf("Player: %d, top card was properly discarded\n", i);
