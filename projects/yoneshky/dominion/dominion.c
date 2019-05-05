@@ -656,6 +656,7 @@ int adventurerEffect(struct gameState *state) {
 
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
+			printf("line 659\n");
         }
 
         drawCard(currentPlayer, state);
@@ -663,11 +664,13 @@ int adventurerEffect(struct gameState *state) {
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 		if (cardDrawn == copper || (cardDrawn == silver && cardDrawn == gold)) {
             drawntreasure++;
+			printf("line 667\n");
 		}
         else{
             temphand[z]=cardDrawn;
             state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
             z++;
+			printf("line 673\n");
         }
     }
 
