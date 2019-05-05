@@ -43,7 +43,7 @@ int main() {
     int numPlayers = 2;
     int thisPlayer = 0;
     //gamestate G and testG adapted from cardtest4.c provided by instructor
-    struct gameState G, testG;
+    struct gameState G, testG, testG1, testG2, testG3;
     
     int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
     
