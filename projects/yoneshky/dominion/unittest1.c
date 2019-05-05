@@ -33,10 +33,10 @@ int main() {
     printf("--- Unit Test On: %s ---\n", TESTCARD);
     
     printf("--- Testing If Two Additional Treasure Cards Are Drawn ---\n");
-	//line 36
+	printf("line 36\n");
     adventurerEffect(&testG);
 	
-	//line 38
+	printf("line 38\n")
     //initial treasure in hand count
     int initTreasureCount;
     int initCards;
@@ -47,6 +47,7 @@ int main() {
             initTreasureCount++;
         }
     }
+	printf("line 49\n")
     //line 49
     //final treasure in hand count
     int finTreasureCount;
