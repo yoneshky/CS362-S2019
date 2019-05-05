@@ -120,6 +120,7 @@ int main() {
 	}
 	
 	//positive tests
+	printf("--- Testing Hand Count is Correct ---\n");
 	int initHandCount = G.handCount[thisPlayer];
 	int finHandCount = testG.handCount[thisPlayer];
 	
@@ -142,7 +143,7 @@ int main() {
 	int finNumActions = testG.numActions;
 	
 	printf("Final number of actions = %d, expected = %d\n", finNumActions, initNumActions + 2);
-	asserttrue(finNumActions, initNumActions);
+	asserttrue(finNumActions, initNumActions + 2);
 	
 	printf("--- Testing Buy Count is unchanged ---\n");
 	
