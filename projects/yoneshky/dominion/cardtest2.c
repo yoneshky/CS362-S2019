@@ -58,7 +58,7 @@ int main() {
 	G.hand[thisPlayer][G.handCount[thisPlayer]] = smithy;
 	G.handCount[thisPlayer]++;
 	
-	cardEffect(adventurer, 0, 0, 0, &testG, testG.handCount[thisPlayer] - 2, 0);
+	cardEffect(smithy, 0, 0, 0, &testG, testG.handCount[thisPlayer] - 2, 0);
 	
 	printf("--- Testing Smithy Should be in Hand if Wrong HandPos given ---\n");
 	
@@ -66,7 +66,7 @@ int main() {
 	int smithFlag = 0;
 	
 	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
-		if (testG.hand[thisPlayer][i] == adventurer) {
+		if (testG.hand[thisPlayer][i] == smithy) {
 			printf("Smithy not properly discarded, test passed!\n");
 			smithFlag = -1;
 		}
