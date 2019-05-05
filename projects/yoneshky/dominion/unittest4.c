@@ -55,7 +55,7 @@ int main() {
 	//mimic sea_hag draw to use hand pos for seaHag effect
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = sea_hag;
 	testG.handCount[thisPlayer]++;
-	G.hand[thisPlayer][testG.handCount[thisPlayer]] = sea_hag;
+	G.hand[thisPlayer][G.handCount[thisPlayer]] = sea_hag;
 	G.handCount[thisPlayer]++;
 	
     seaHagEffect(&testG, testG.handCount[thisPlayer] - 1);

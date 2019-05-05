@@ -55,7 +55,7 @@ int main() {
 	//mimic great_hall draw to use hand pos for greatHall effect
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = great_hall;
 	testG.handCount[thisPlayer]++;
-	G.hand[thisPlayer][testG.handCount[thisPlayer]] = great_hall;
+	G.hand[thisPlayer][G.handCount[thisPlayer]] = great_hall;
 	G.handCount[thisPlayer]++;
 	
     greatHallEffect(&testG, testG.handCount[thisPlayer] - 1);
