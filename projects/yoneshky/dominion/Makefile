@@ -45,6 +45,9 @@ unittest3: unittest3.c dominion.o rngs.o
 unittest4: unittest4.c dominion.o rngs.o
 	gcc -o unittest4 unittest4.c -g  dominion.o rngs.o $(CFLAGS)
 
+cardtest1: cardtest1.c dominion.o rngs.o
+	gcc -o cardtest1 cardtest1.c -g  dominion.o rngs.o $(CFLAGS)
+
 all: playdom player unittest1 unittest2 unittest3 unittest4
 
 clean:

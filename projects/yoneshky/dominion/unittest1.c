@@ -67,7 +67,7 @@ int main() {
 
     //line 49
     //final treasure in hand count
-    int finTreasureCount;
+    int finTreasureCount = 0;
     int finCards;
     
     for(i = 0; i < testG.handCount[thisPlayer]; i++) {
