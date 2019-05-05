@@ -47,7 +47,7 @@ int main() {
             initTreasureCount++;
         }
     }
-	printf("line 49\n")
+	printf("line 49\n");
     //line 49
     //final treasure in hand count
     int finTreasureCount;
