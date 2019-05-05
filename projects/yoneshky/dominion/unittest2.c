@@ -130,7 +130,6 @@ int main() {
 		printf("kingdom card: %d\n", i+1);
     	asserttrue(initKingdomCount[i], finKingdomCount[i]);
 	}
-	printf("Kingdom Supply unchanged\n");
     
 	printf("--- Testing if each victory supply is unchanged ---\n");
 	

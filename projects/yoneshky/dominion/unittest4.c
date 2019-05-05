@@ -143,7 +143,7 @@ int main() {
     
     printf("Other Player Hand Count = %d, expected = %d\n", finHandCountPlayer2, initHandCountPlayer2);
     asserttrue(finHandCountPlayer2, initHandCountPlayer2);
-    
+	
     printf("--- Testing No State Change for Victory Card Pile and Kingdom Card Pile ---\n");
     
     int initKingdomCount[10];
@@ -169,7 +169,6 @@ int main() {
 		printf("kingdom card: %d\n", i+1);
     	asserttrue(initKingdomCount[i], finKingdomCount[i]);
 	}
-	printf("Kingdom Supply unchanged\n");
 	
 	printf("--- Testing if each victory supply is unchanged ---\n");
 	
