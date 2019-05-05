@@ -2,7 +2,7 @@
 /* Adapted from cardtest4.c provided by professor
  * Include the following lines in your makefile:
  *
- * unittest1: unittest1.c dominion.o rngs.o
+ * unittest2: unittest1.c dominion.o rngs.o
  *      gcc -o unittest1 -g  unittest1.c dominion.o rngs.o $(CFLAGS)
  */
 
@@ -15,7 +15,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define TESTCARD "adventurer"
+#define TESTCARD "smithy"
 
 void asserttrue(int x, int y) {
 	if(x == y) {
@@ -36,7 +36,7 @@ void assertlessequals(int x, int y) {
 }
 
 int main() {
-    int i, j, m;
+    int i;
     int seed = 1000;
     int numPlayers = 2;
     int thisPlayer = 0;
@@ -49,53 +49,39 @@ int main() {
     memcpy(&testG, &G, sizeof(struct gameState));
     printf("--- Unit Test On: %s ---\n", TESTCARD);
     
-    printf("--- Testing If Two Additional Treasure Cards Are Drawn ---\n");
+    printf("--- Testing If Three cards are drawn ---\n");
 	
-    adventurerEffect(&testG);
+	//mimic smithy draw to use hand pos for smithy effect
+	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = TESTCARD;
+	testG.handCount++;
+	
+    smithyEffect(&testG, testG.handCount[thisPlayer]);
 	
 	
     //initial treasure in hand count
-    int initTreasureCount;
-    int initCards;
-    
-    for(i = 0; i < G.handCount[thisPlayer]; i++) {
-        initCards = G.hand[thisPlayer][i];
-        if(initCards == copper || initCards == silver || initCards == gold) {
-            initTreasureCount++;
-        }
-    }
-
-    //line 49
-    //final treasure in hand count
-    int finTreasureCount;
-    int finCards;
-    
-    for(i = 0; i < testG.handCount[thisPlayer]; i++) {
-        finCards = testG.hand[thisPlayer][i];
-        if(finCards == copper || finCards == silver || finCards == gold) {
-            finTreasureCount++;
-        }
-    }
-    
-    printf("Drawn treasure count = %d, expected = %d\n", finTreasureCount - initTreasureCount, 2);
-	asserttrue(finTreasureCount, 2);
+    int initHandCount = G.handCount[thisPlayer];
+	int finHandCount = testG.handCount[thisPlayer];
 	
+	printf("Hand count = %d, expected = %d\n", initHandCount, finHandCount);
+	asserttrue(initHandCount, finHandCount);
 	
-    printf("Testing Deck Count is at least 2 Less Than Starting Count\n");
+    printf("Testing Deck Count is 3 less than starting\n");
     
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
     
-    printf("Final Deck Count = %d, expected (at most) = %d\n", finDeckCount, initDeckCount - 2);
-    assertlessequals(finDeckCount, initDeckCount - 2);
+    printf("Final Deck Count = %d, expected (at most) = %d\n", finDeckCount, initDeckCount);
+    asserttrue(finDeckCount, initDeckCount - 3);
     
-    printf("Testing Hand Count Is 2 More Than Starting Hand\n");
+    printf("Testing Smithy Not in Hand Anymore\n");
     
-    int initHandCount = G.handCount[thisPlayer];
-    int finHandCount = testG.handCount[thisPlayer];
-    
-    printf("Final Hand Count = %d, expected = %d\n", finHandCount, initHandCount + 1);
-    asserttrue(finHandCount, (initHandCount + 1));
+	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
+		if (testG.hand[thisPlayer][i] == smithy) {
+			printf("Smithy not properly discarded\n");
+		}
+	}
+	
+	printf("Smithy properly discarded\n");
     
     printf("Testing No State Change for Other Player\n");
     
@@ -156,7 +142,7 @@ int main() {
     printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
     asserttrue(finProvinceCount, initProvinceCount);
     
-    printf("--- Unit Test 1 Complete! ---\n");
+    printf("--- Unit Test 2 Complete! ---\n");
     
     return 0;
 }
