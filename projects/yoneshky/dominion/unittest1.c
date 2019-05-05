@@ -134,7 +134,7 @@ int main() {
     }
 	printf("Testing if each kingdom supply is unchanged\n");
 	for(i = 0; i < 10; i++) {
-		printf("kingdom card: %d\n", i);
+		printf("kingdom card: %d\n", i+1);
     	asserttrue(initKingdomCount[i], finKingdomCount[i]);
 	}
 	printf("Kingdom Supply unchanged\n");
