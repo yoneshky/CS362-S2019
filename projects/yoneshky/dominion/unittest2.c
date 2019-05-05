@@ -72,7 +72,7 @@ int main() {
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
     
-    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount);
+    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount - 3);
     asserttrue(finDeckCount, initDeckCount - 3);
     
     printf("Testing Smithy Not in Hand Anymore\n");
@@ -84,7 +84,6 @@ int main() {
 		if (testG.hand[thisPlayer][i] == smithy) {
 			printf("Smithy not properly discarded\n");
 			smithyFlag = -1;
-			return;
 		}
 	}
 	if(smithyFlag >= 0) {
