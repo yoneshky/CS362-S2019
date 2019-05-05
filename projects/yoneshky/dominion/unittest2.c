@@ -85,7 +85,7 @@ int main() {
 			return;
 		}
 	}
-	if(smithFlag >= 0) {
+	if(smithyFlag >= 0) {
 		printf("Smithy properly discarded\n");
 	}
     
