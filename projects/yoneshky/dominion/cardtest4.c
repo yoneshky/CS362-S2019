@@ -56,7 +56,7 @@ int main() {
 	G.hand[thisPlayer][G.handCount[thisPlayer]] = salvager;
 	G.handCount[thisPlayer]++;
 	updateCoins(thisPlayer, &G, 0)
-	int initCoin Count = G.coins;
+	int initCoin = G.coins;
 	
 	cardEffect(salvager, 0, 0, 0, &testG, testG.handCount[thisPlayer], 0);
 	
@@ -97,7 +97,7 @@ int main() {
 	updateCoins(thisPlayer, &testG1, 0);
 	int copperCoinCount = testG1.coins;
 	printf("Final Coin Count = %d, expected = %d\n", copperCoinCount, initCoin);
-	asserttrue(copperCoinCount, initCoinCount);
+	asserttrue(copperCoinCount, initCoin);
 	
 	printf("--- Choice to Discard Silver (3 Cost) ---\n");
 	memcpy(&testG2, &G, sizeof(struct gameState));
@@ -123,7 +123,7 @@ int main() {
 	updateCoins(thisPlayer, &testG2, 0);
 	int silverCoinCount = testG2.coins;
 	printf("Final Coin Count = %d, expected = %d\n", silverCoinCount, initCoin + 3);
-	asserttrue(silverCoinCount, initCoinCount + 3);
+	asserttrue(silverCoinCount, initCoin + 3);
 	
 	printf("--- Choice to Discard Gold (6 Cost) ---\n");
 	memcpy(&testG3, &G, sizeof(struct gameState));
@@ -149,7 +149,7 @@ int main() {
 	updateCoins(thisPlayer, &testG3, 0);
 	int goldCoinCount = testG3.coins;
 	printf("Final Coin Count = %d, expected = %d\n", goldCoinCount, initCoin + 6);
-	asserttrue(goldCoinCount, initCoinCount + 6);
+	asserttrue(goldCoinCount, initCoin + 6);
 	
 	printf("--- Testing Salvager Not in Hand Anymore ---\n");
 	
