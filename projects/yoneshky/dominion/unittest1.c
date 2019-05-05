@@ -104,6 +104,7 @@ int main() {
             for(j = 0; j < 10; j++) {
                 if(k[j] == i) {
                     initKingdomCount[j] = G.supplyCount[i];
+					printf("%d", initKingdomCount[j])
                 }
             }
     }
