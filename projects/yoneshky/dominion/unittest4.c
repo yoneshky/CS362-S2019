@@ -44,7 +44,7 @@ int main() {
     //gamestate G and testG adapted from cardtest4.c provided by instructor
     struct gameState G, testG;
     
-    int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
+    int k[10] = {adventurer, smithy, council_room, feast, mine, sea_hag, village, baron, great_hall, minion};
     
     initializeGame(numPlayers, k, seed, &G);
     memcpy(&testG, &G, sizeof(struct gameState));
