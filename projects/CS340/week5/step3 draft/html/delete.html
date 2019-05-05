@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CS340 Project - Delete Page</title>
+  </head>
+  <body>
+  <!-- <link rel="stylesheet" href="delete.css"> -->
+    <!-- Your actual page content here -->
+
+    <!-- Navigation Bar Implementation Based on: https://www.w3schools.com/css/css_navbar.asp-->
+     <div class="navBar">
+      <a href="homepage.html">Home</a>
+      <a href="add.html">Add Info</a>
+      <a class="active" href="delete.html">Delete Info</a>
+      <a href="update.html">Update Info</a>
+      <a href="display.html">Display Info</a>
+    </div>
+   <br>
+   
+   <div class = "header"> 
+   	<h1 id="header">Delete Information</h1>
+   </div>
+
+	<form>
+      <fieldset>
+        <legend>
+          Delete Trainer
+          </legend>  
+            <label for="delete">  Trainer Name       
+              <input list ="deleteTrainerName"> 	
+              	<datalist id = "deleteTrainerName">
+              		<option value="to be populated from database">
+              	</datalist>
+              <input type="submit" id="trainerDeleteSubmit">
+            </label>              
+      </fieldset>
+    </form>
+
+   <!-- <script src="to be filled in"></script> -->
+  </body>
+</html>
