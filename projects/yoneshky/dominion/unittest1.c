@@ -119,6 +119,7 @@ int main() {
 	for(i = 0; i < 10; i++) {
     	assert(initKingdomCount[i] = finKingdomCount[i]);
 	}
+	printf("Kingdom Supply unchanged\n");
     
     int initEstateCount = G.supplyCount[estate];
     int initDuchyCount = G.supplyCount[duchy];
