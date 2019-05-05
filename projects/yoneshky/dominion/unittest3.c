@@ -73,7 +73,7 @@ int main() {
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
     
-    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount - 3);
+    printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount - 1);
     asserttrue(finDeckCount, initDeckCount - 1);
     
     printf("Testing Great Hall Not in Hand Anymore\n");
@@ -166,7 +166,7 @@ int main() {
     printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
     asserttrue(finProvinceCount, initProvinceCount);
     
-    printf("--- Unit Test 2 Complete! ---\n");
+    printf("--- Unit Test 3 Complete! ---\n");
     
     return 0;
 }
