@@ -81,7 +81,7 @@ int main() {
 	for(i = 0; i < testG.handCount[thisPlayer]; i++) {
 		if (testG.hand[thisPlayer][i] == smithy) {
 			printf("Smithy not properly discarded\n");
-			smithFlag = -1;
+			smithyFlag = -1;
 			return;
 		}
 	}
