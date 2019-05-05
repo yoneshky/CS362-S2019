@@ -67,7 +67,7 @@ int main() {
 	printf("Hand count = %d, expected = %d\n", finHandCount, initHandCount + 2);
 	asserttrue(initHandCount, finHandCount);
 	
-    printf("Testing Deck Count is 3 less than starting\n");
+    printf("--- Testing Deck Count is 3 less than starting ---\n");
     
     int initDeckCount = G.deckCount[thisPlayer];
     int finDeckCount = testG.deckCount[thisPlayer];
@@ -75,7 +75,7 @@ int main() {
     printf("Final Deck Count = %d, expected = %d\n", finDeckCount, initDeckCount - 3);
     asserttrue(finDeckCount, initDeckCount - 3);
     
-    printf("Testing Smithy Not in Hand Anymore\n");
+    printf("--- Testing Smithy Not in Hand Anymore ---\n");
 	
 	//flag set if smithy is discarded properly
 	int smithyFlag = 0;
@@ -90,7 +90,7 @@ int main() {
 		printf("Smithy properly discarded\n");
 	}
     
-    printf("Testing No State Change for Other Player\n");
+    printf("--- Testing No State Change for Other Player ---\n");
     
     int initHandCountPlayer2 = G.handCount[thisPlayer+1];
     int finHandCountPlayer2 = testG.handCount[thisPlayer+1];
@@ -105,7 +105,7 @@ int main() {
     asserttrue(finDeckCountPlayer2, initDeckCountPlayer2);
     
     
-    printf("Testing No State Change for Victory Card Pile and Kingdom Card Pile\n");
+    printf("--- Testing No State Change for Victory Card Pile and Kingdom Card Pile ---\n");
     
     int initKingdomCount[10];
     int finKingdomCount[10];
@@ -125,14 +125,14 @@ int main() {
             }
         }
     }
-	printf("Testing if each kingdom supply is unchanged\n");
+	printf("--- Testing if each kingdom supply is unchanged ---\n");
 	for(i = 0; i < 10; i++) {
 		printf("kingdom card: %d\n", i+1);
     	asserttrue(initKingdomCount[i], finKingdomCount[i]);
 	}
 	printf("Kingdom Supply unchanged\n");
     
-	printf("Testing if each victory supply is unchanged\n");
+	printf("--- Testing if each victory supply is unchanged ---\n");
 	
 	int initEstateCount = G.supplyCount[estate];
 	int initDuchyCount = G.supplyCount[duchy];
@@ -151,7 +151,7 @@ int main() {
 	printf("Province Supply Count = %d, expected = %d\n", finEstateCount, initEstateCount);
 	asserttrue(finProvinceCount, initProvinceCount);
 	
-	printf("Testing if each treasure supply is unchanged\n");
+	printf("--- Testing if each treasure supply is unchanged ---\n");
 	
 	int initCopperCount = G.supplyCount[copper];
 	int initSilverCount = G.supplyCount[silver];
