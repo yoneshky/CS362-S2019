@@ -36,7 +36,7 @@ void assertlessequals(int x, int y) {
 }
 
 int main() {
-    int i;
+	int i, j;
     int seed = 1000;
     int numPlayers = 2;
     int thisPlayer = 0;
@@ -52,8 +52,8 @@ int main() {
     printf("--- Testing If Three cards are drawn ---\n");
 	
 	//mimic smithy draw to use hand pos for smithy effect
-	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = TESTCARD;
-	testG.handCount++;
+	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = smithy;
+	testG.handCount[thisPlayer]++;
 	
     smithyEffect(&testG, testG.handCount[thisPlayer]);
 	
