@@ -747,7 +747,8 @@ int seaHagEffect(struct gameState *state, int handPos) {
     for (i = 0; i < state->numPlayers; i++){
         //bug will make card affect only the user of Sea Hag
         if (i == currentPlayer){
-            state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];                state->deckCount[i]--;
+            state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];
+			state->deckCount[i]--;
             state->discardCount[i]++;
             state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
         }
