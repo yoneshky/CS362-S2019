@@ -59,47 +59,38 @@ cardtest4: cardtest4.c dominion.o rngs.o
 
 default: tests.out
 
-tests.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.c
-
+unittestresults: dominion.c
 	echo "Result for running BST tests:" > tests.out
 	echo "unittest1.c:" >> tests.out
-	gcc dominion.c rngs.c unittest1.c $(CFLAGS)
-	./unittest1 >> tests.out
+	./unittest1
 	gcov dominion.c -fb >> tests.out
 
 	echo "unittest2.c:" >> tests.out
-	gcc dominion.c rngs.c unittest2.c $(CFLAGS)
-	./unittest2 >> tests.out
+	./unittest2
 	gcov dominion.c -fb >> tests.out
 
 	echo "unittest3.c:" >> tests.out
-	gcc dominion.c rngs.c unittest3.c $(CFLAGS)
-	./unittest3 >> tests.out
+	./unittest3
 	gcov dominion.c -fb >> tests.out
 
 	echo "unittest4.c:" >> tests.out
-	gcc dominion.c rngs.c unittest4.c $(CFLAGS)
-	./unittest4 >> tests.out
+	./unittest4
 	gcov dominion.c -fb >> tests.out
 
 	echo "cardtest1.c:" >> tests.out
-	gcc dominion.c rngs.c cardtest1.c $(CFLAGS)
-	./cardtest1 >> tests.out
+	./cardtest1
 	gcov dominion.c -fb >> tests.out
 
 	echo "cardtest2.c:" >> tests.out
-	gcc dominion.c rngs.c cardtest2.c $(CFLAGS)
-	./cardtest2 >> tests.out
+	./cardtest2
 	gcov dominion.c -fb >> tests.out
 
 	echo "cardtest3.c:" >> tests.out
-	gcc dominion.c rngs.c cardtest3.c $(CFLAGS)
-	./cardtest3 >> tests.out
+	./cardtest3
 	gcov dominion.c -fb >> tests.out
 
 	echo "cardtest4.c:" >> tests.out
-	gcc dominion.c rngs.c cardtest4.c $(CFLAGS)
-	./cardtest4 >> tests.out
+	./cardtest4
 	gcov dominion.c -fb >> tests.out
 
 all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
