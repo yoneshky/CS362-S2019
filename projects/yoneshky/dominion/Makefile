@@ -102,7 +102,7 @@ tests.out: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c dominion.
 	./cardtest4 >> tests.out
 	gcov dominion.c -fb >> tests.out
 
-all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 test.out
+all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 tests.out
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest1.exe unittest2 unittest2.exe unittest3 unittest3.exe unittest4 unittest4.exe cardtest1 cardtest1.exe cardtest2 cardtest2.exe cardtest3 cardtest3.exe cardtest4 cardtest4.exe test.out *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
