@@ -81,6 +81,14 @@ int main() {
 	testG1.hand[thisPlayer][testG1.handCount[thisPlayer]] = salvager;
 	testG1.handCount[thisPlayer]++;
 	
+	for(i = 0; i < testG1.handCount[thisPlayer]; i++) {
+		printf("test %d: %d\n", i, testG1.hand[thisPlayer][i]);
+	}
+	printf("initial hand\n");
+	for(i = 0; i < G.handCount[thisPlayer]; i++) {
+		printf("test %d: %d\n", i, G.hand[thisPlayer][i]);
+	}
+	
 	cardEffect(salvager, testG1.handCount[thisPlayer]-1, 0, 0, &testG1, testG1.handCount[thisPlayer], 0);
 
 		if (testG1.hand[thisPlayer][5] == copper) {
