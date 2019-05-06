@@ -78,9 +78,9 @@ int main() {
 	
 	testG1.hand[thisPlayer][4] = copper;
 	
-	cardEffect(salvager, 5, 0, 0, &testG1, testG1.handCount[thisPlayer], 0);
+	cardEffect(salvager, 4, 0, 0, &testG1, testG1.handCount[thisPlayer], 0);
 
-		if (testG1.hand[thisPlayer][4] == copper) {
+		if (testG1.hand[thisPlayer][4] != copper) {
 			printf("Copper Properly discarded, test passed!\n");
 			discardFlag = -1;
 		}
@@ -91,7 +91,6 @@ int main() {
 	
 	printf("--- Coin Gain from Copper ---\n");
 	
-	updateCoins(thisPlayer, &testG1, 0);
 	int copperCoinCount = testG1.coins;
 	printf("Final Coin Count = %d, expected = %d\n", copperCoinCount, initCoin);
 	asserttrue(copperCoinCount, initCoin);
@@ -101,20 +100,18 @@ int main() {
 	discardFlag = 0;
 	testG2.hand[thisPlayer][4] = silver;
 	
-	cardEffect(salvager, 5, 0, 0, &testG2, testG2.handCount[thisPlayer], 0);
+	cardEffect(salvager, 4, 0, 0, &testG2, testG2.handCount[thisPlayer], 0);
 	
-	if (testG2.hand[thisPlayer][4] == silver) {
+	if (testG2.hand[thisPlayer][4] != silver) {
 		printf("Silver Properly discarded, test passed!\n");
 		discardFlag = -1;
 	}
-	
 	if(discardFlag >= 0) {
 		printf("Silver not properly discarded, test failed!\n");
 	}
 	
 	printf("--- Coin Gain from Silver ---\n");
 	
-	updateCoins(thisPlayer, &testG2, 0);
 	int silverCoinCount = testG2.coins;
 	printf("Final Coin Count = %d, expected = %d\n", silverCoinCount, initCoin + 3);
 	asserttrue(silverCoinCount, initCoin + 3);
@@ -124,9 +121,9 @@ int main() {
 	discardFlag = 0;
 	testG3.hand[thisPlayer][4] = gold;
 	
-	cardEffect(salvager, 5, 0, 0, &testG3, testG3.handCount[thisPlayer], 0);
+	cardEffect(salvager, 4, 0, 0, &testG3, testG3.handCount[thisPlayer], 0);
 	
-	if (testG3.hand[thisPlayer][4] == gold) {
+	if (testG3.hand[thisPlayer][4] != gold) {
 		printf("Gold Properly discarded, test passed!\n");
 		discardFlag = -1;
 	}
@@ -137,7 +134,6 @@ int main() {
 	
 	printf("--- Coin Gain from Gold ---\n");
 	
-	updateCoins(thisPlayer, &testG3, 0);
 	int goldCoinCount = testG3.coins;
 	printf("Final Coin Count = %d, expected = %d\n", goldCoinCount, initCoin + 6);
 	asserttrue(goldCoinCount, initCoin + 6);
