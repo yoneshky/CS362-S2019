@@ -82,7 +82,7 @@ int main() {
 		printf("test %d: %d\n", i, testG1.hand[thisPlayer][i]);
 	}
 	printf("initial hand\n");
-	for(i = 0; i < G.handCount[thisPlayer]; i++) {
+	for(i = 0; i < testG2.handCount[thisPlayer]; i++) {
 		printf("test %d: %d\n", i, G.hand[thisPlayer][i]);
 	}
 	
