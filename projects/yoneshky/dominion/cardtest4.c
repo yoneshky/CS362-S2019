@@ -1,7 +1,6 @@
 /*
  * cardtest4.c
  * Kyle Yoneshige
- 
  */
 
 /* Adapted from cardtest4.c provided by professor

@@ -58,7 +58,6 @@ int main() {
 	
     adventurerEffect(&testG);
 	
-	
     //initial treasure in hand count
     int initTreasureCount;
     int initCards;

@@ -65,8 +65,6 @@ int main() {
 	
     greatHallEffect(&testG, testG.handCount[thisPlayer] - 1);
 	
-	
-    //initial treasure in hand count
     int initHandCount = G.handCount[thisPlayer];
 	int finHandCount = testG.handCount[thisPlayer];
 	

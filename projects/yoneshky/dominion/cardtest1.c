@@ -1,7 +1,6 @@
 /*
  * cardtest1.c
  * Kyle Yoneshige
- 
  */
 
 /* Adapted from cardtest4.c provided by professor
@@ -65,7 +64,7 @@ int main() {
 	
 	cardEffect(adventurer, 0, 0, 0, &testG, testG.handCount[thisPlayer] - 2, 0);
 	
-	printf("--- Testing Adveturer Should be in Hand if Wrong HandPos given ---\n");
+	printf("--- Testing Adventurer Should be in Hand if Wrong HandPos given ---\n");
 	
 	//flag set if adventurer is discarded properly
 	int advFlag = 0;

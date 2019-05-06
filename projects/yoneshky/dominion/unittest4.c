@@ -56,7 +56,7 @@ int main() {
     memcpy(&testG, &G, sizeof(struct gameState));
     printf("--- Unit Test On: %s ---\n", TESTCARD);
     
-    printf("--- Testing Top card is Discarded ---\n");
+    printf("--- Testing Top card is Discarded For Other Players ---\n");
 	
 	//mimic sea_hag draw to use hand pos for seaHag effect
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = sea_hag;
@@ -69,7 +69,7 @@ int main() {
 	int initTopCard;
 	int finTopCard;
 	
-	for(i = 0; i < numPlayers; i++) {
+	for(i = 1; i < numPlayers; i++) {
 		initTopCard = G.deck[i][G.deckCount[i]--];
 		finTopCard = testG.deck[i][testG.deckCount[i]--];
 		
@@ -81,8 +81,8 @@ int main() {
 		}
 	}
 	
-	printf("--- Testing Top of Deck is Curse ---\n");
-	for(i = 0; i < testG.numPlayers; i++) {
+	printf("--- Testing Top of Deck is Curse For Other Players ---\n");
+	for(i = 1; i < testG.numPlayers; i++) {
 		initTopCard = G.deck[i][G.deckCount[i]--];
 		finTopCard = testG.deck[i][testG.deckCount[i]--];
 		
@@ -95,7 +95,7 @@ int main() {
 	}
 	
 	
-    printf("--- Testing Deck Count is The Same as Starting ---\n");
+    printf("--- Testing Deck Count is The Same as Starting For all Players ---\n");
 	for(i = 0; i < numPlayers; i++) {
     	int initDeckCount = G.deckCount[i];
     	int finDeckCount = testG.deckCount[i];
