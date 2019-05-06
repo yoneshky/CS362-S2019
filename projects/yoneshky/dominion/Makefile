@@ -57,41 +57,41 @@ cardtest3: cardtest3.c dominion.o rngs.o
 cardtest4: cardtest4.c dominion.o rngs.o
 	gcc -o cardtest4 cardtest4.c -g  dominion.o rngs.o $(CFLAGS)
 
-default: tests.out
+default: unittestresults.out
 
 unittestresults: dominion.c
 	echo "Result for running BST tests:" > tests.out
-	echo "unittest1.c:" >> tests.out
-	./unittest1
-	gcov dominion.c -b >> tests.out
+	echo "unittest1.c:" >> unittestresults.out
+	./unittest1 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "unittest2.c:" >> tests.out
-	./unittest2
-	gcov dominion.c -b >> tests.out
+	echo "unittest2.c:" >> unittestresults.out
+	./unittest2 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "unittest3.c:" >> tests.out
-	./unittest3
-	gcov dominion.c -b >> tests.out
+	echo "unittest3.c:" >> unittestresults.out
+	./unittest3 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "unittest4.c:" >> tests.out
-	./unittest4
-	gcov dominion.c -b >> tests.out
+	echo "unittest4.c:" >> unittestresults.out
+	./unittest4 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "cardtest1.c:" >> tests.out
-	./cardtest1
-	gcov dominion.c -b >> tests.out
+	echo "cardtest1.c:" >> unittestresults.out
+	./cardtest1 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "cardtest2.c:" >> tests.out
-	./cardtest2
-	gcov dominion.c -b >> tests.out
+	echo "cardtest2.c:" >> unittestresults.out
+	./cardtest2 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "cardtest3.c:" >> tests.out
-	./cardtest3
-	gcov dominion.c -b >> tests.out
+	echo "cardtest3.c:" >> unittestresults.out
+	./cardtest3 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
-	echo "cardtest4.c:" >> tests.out
-	./cardtest4
-	gcov dominion.c -b >> tests.out
+	echo "cardtest4.c:" >> unittestresults.out
+	./cardtest4 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 
 all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 
