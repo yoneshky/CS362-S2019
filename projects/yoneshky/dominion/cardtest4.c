@@ -78,15 +78,7 @@ int main() {
 	
 	testG1.hand[thisPlayer][4] = copper;
 	
-	for(i = 0; i < testG1.handCount[thisPlayer]; i++) {
-		printf("test %d: %d\n", i, testG1.hand[thisPlayer][i]);
-	}
-	printf("initial hand\n");
-	for(i = 0; i < testG2.handCount[thisPlayer]; i++) {
-		printf("test %d: %d\n", i, G.hand[thisPlayer][i]);
-	}
-	
-	cardEffect(salvager, 4, 0, 0, &testG1, testG1.handCount[thisPlayer], 0);
+	cardEffect(salvager, 5, 0, 0, &testG1, testG1.handCount[thisPlayer], 0);
 
 		if (testG1.hand[thisPlayer][4] == copper) {
 			printf("Copper Properly discarded, test passed!\n");
@@ -109,7 +101,7 @@ int main() {
 	discardFlag = 0;
 	testG2.hand[thisPlayer][4] = silver;
 	
-	cardEffect(salvager, 4, 0, 0, &testG2, testG2.handCount[thisPlayer], 0);
+	cardEffect(salvager, 5, 0, 0, &testG2, testG2.handCount[thisPlayer], 0);
 	
 	if (testG2.hand[thisPlayer][4] == silver) {
 		printf("Silver Properly discarded, test passed!\n");
@@ -132,7 +124,7 @@ int main() {
 	discardFlag = 0;
 	testG3.hand[thisPlayer][4] = gold;
 	
-	cardEffect(salvager, 4, 0, 0, &testG3, testG3.handCount[thisPlayer], 0);
+	cardEffect(salvager, 5, 0, 0, &testG3, testG3.handCount[thisPlayer], 0);
 	
 	if (testG3.hand[thisPlayer][4] == gold) {
 		printf("Gold Properly discarded, test passed!\n");
