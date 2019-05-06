@@ -59,7 +59,7 @@ cardtest4: cardtest4.c dominion.o rngs.o
 
 default: tests.out
 
-tests.out: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c dominion.c rngs.c
+tests.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.c
 
 	echo "Result for running BST tests:" > tests.out
 	echo "unittest1.c:" >> tests.out
