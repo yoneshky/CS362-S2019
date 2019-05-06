@@ -63,35 +63,35 @@ unittestresults: dominion.c
 	echo "Result for running BST tests:" > tests.out
 	echo "unittest1.c:" >> tests.out
 	./unittest1
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "unittest2.c:" >> tests.out
 	./unittest2
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "unittest3.c:" >> tests.out
 	./unittest3
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "unittest4.c:" >> tests.out
 	./unittest4
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "cardtest1.c:" >> tests.out
 	./cardtest1
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "cardtest2.c:" >> tests.out
 	./cardtest2
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "cardtest3.c:" >> tests.out
 	./cardtest3
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 	echo "cardtest4.c:" >> tests.out
 	./cardtest4
-	gcov dominion.c -fb >> tests.out
+	gcov dominion.c -b >> tests.out
 
 all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 
