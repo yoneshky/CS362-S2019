@@ -5,14 +5,27 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+	// TODO: rewrite this function
+	//create char between 40 - 125 on ascii table ( ( -> } )
+	char character = (char)(rand()%85 + 40);
+	
+	return character;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+	// TODO: rewrite this function
+	//create string with 6 characters
+	char arrayString[6];
+	
+	//assign each element of array to character from a - z
+	for(int i = 0; i < 5; i++) {
+		arrayString[i] = (char)(rand()%25 + 97);
+	}
+	//assigned the last element of string to \0 to limit random test
+	arrayString[5] = '\0';
+	
+	return arrayString;
 }
 
 void testme()
