@@ -7,4 +7,4 @@ testMeResults: testme.c
 	gcov testme.c -b
 
 clean:
-rm -f *.o testMeResults *.gcov *.gcda *.gcno *.so *.out
+	rm -f *.o testMeResults *.gcov *.gcda *.gcno *.so *.out
