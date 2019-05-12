@@ -7,7 +7,7 @@ char inputChar()
 {
 	// TODO: rewrite this function
 	//create char between 32 - 125 on ascii table ( Space -> } )
-	char character = (char)(rand()%93 + 32);
+	char character = (char)(rand()%94 + 32);
 	
 	return character;
 }
@@ -20,7 +20,7 @@ char *inputString()
 	
 	//assign each element of array to character from a - z
 	for(int i = 0; i < 5; i++) {
-		arrayString[i] = (char)(rand()%25 + 97);
+		arrayString[i] = (char)(rand()%26 + 97);
 	}
 	//assigned the last element of string to \0 to limit random test
 	arrayString[5] = '\0';
