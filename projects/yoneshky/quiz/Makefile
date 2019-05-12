@@ -2,7 +2,7 @@ CFLAGS= -Wall -fpic -coverage -lm -std=c99
 
 
 testMeResults: testme.c
-	gcc -c testme.c -g  $(CFLAGS)
+	gcc -c testMeResults -g testme.c $(CFLAGS)
 	./testMeResults
 	gcov testme.c -b
 
