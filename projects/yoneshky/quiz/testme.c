@@ -6,8 +6,8 @@
 char inputChar()
 {
 	// TODO: rewrite this function
-	//create char between 40 - 125 on ascii table ( ( -> } )
-	char character = (char)(rand()%85 + 40);
+	//create char between 32 - 125 on ascii table ( Space -> } )
+	char character = (char)(rand()%93 + 40);
 	
 	return character;
 }
