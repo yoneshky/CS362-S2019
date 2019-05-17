@@ -116,12 +116,12 @@ int main() {
 		if(testCount == testPass) {
 			advPass++;
 			printf("Test #%d passed!\n", n+1);
-			printf("Test pass: %d, test Count: %d \n", testPass, testCount);
+			printf("Tests Passed: %d, Test Count: %d \n", testPass, testCount);
 		}
 		else {
 			advFail++;
 			printf("Test #%d failed!\n", n+1);
-			printf("Test pass: %d, test Count: %d \n", testPass, testCount);
+			printf("Test Passed: %d, Test Count: %d \n", testPass, testCount);
 		}
 		
 	}
