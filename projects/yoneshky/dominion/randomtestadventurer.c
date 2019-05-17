@@ -23,8 +23,6 @@ int main() {
 	int advFail = 0;
 	printf("Line 22");
 	
-	int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
-	
 	printf("Line 26");
 	
 	for(n = 0; n < 2000; n++) {
@@ -38,8 +36,12 @@ int main() {
 		int i, j;
 		//gamestate G and testG adapted from cardtest4.c provided by instructor
 		struct gameState G, testG;
+		int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
+		
 		initializeGame(numPlayers, k, seed, &G);
-		printf("Line 40");
+		
+		printf("Line 43");
+		
 		//randomize hand and deck count of all players
 		for(i = 0; i < numPlayers; i++) {
 			G.deckCount[i] = rand() % MAX_DECK;
@@ -119,6 +121,6 @@ int main() {
 		}
 		
 	}
-			printf("Hello");
+	printf("122\n");
 	printf("Out of %d tests -> Pass:  %d, Fail:  %d\n", 2000, advPass, advFail);
 }
