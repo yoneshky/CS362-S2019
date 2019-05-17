@@ -1,5 +1,5 @@
 //
-//  randomtestcard1.c
+//  randomtestadventurer.c
 //  yoneshky-assignment-4
 //
 //  Created by Kyle Yoneshige on 5/15/19.
