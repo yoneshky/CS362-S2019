@@ -22,7 +22,7 @@ int main() {
 	int advPass = 0;
 	int advFail = 0;
 	
-	for(n = 0; n < 200; n++) {
+	for(n = 0; n < 2000; n++) {
 		printf("Executing test: %d\n", n);
 		int seed = 1000;
 		int numPlayers = rand()%4 + 1;
@@ -112,12 +112,12 @@ int main() {
 		
 		if(testCount == testPass) {
 			advPass++;
-			printf("Test #%d passed!\n", n);
+			printf("Test #%d passed!\n", n+1);
 			printf("Test pass: %d, test Count: %d \n", testPass, testCount);
 		}
 		else {
 			advFail++;
-			printf("Test #%d failed!\n", n);
+			printf("Test #%d failed!\n", n+1);
 			printf("Test pass: %d, test Count: %d \n", testPass, testCount);
 		}
 		
