@@ -17,13 +17,10 @@
 #define TESTCARD "adventurer"
 
 int main() {
-	printf("Line 18");
+
 	int n;
 	int advPass = 0;
 	int advFail = 0;
-	printf("Line 22");
-	
-	printf("Line 26");
 	
 	for(n = 0; n < 2000; n++) {
 		int seed = 1000;
@@ -40,7 +37,7 @@ int main() {
 		
 		initializeGame(numPlayers, k, seed, &G);
 		
-		printf("Line 43");
+		
 		
 		//randomize hand and deck count of all players
 		for(i = 0; i < numPlayers; i++) {
@@ -50,7 +47,7 @@ int main() {
 		memcpy(&testG, &G, sizeof(struct gameState));
 		adventurerEffect(&testG);
 		int testCount = 0;
-		printf("Line 49");
+		
 		//test 2 treasure drawn
 		int card;
 		//treasure in hand count before adventurer
@@ -79,7 +76,7 @@ int main() {
 		int finHandCount = 0;
 		int initDeckCount = 0;
 		int finDeckCount = 0;
-		printf("Line 78");
+		
 		//test hand count +1
 		initHandCount = G.handCount[thisPlayer];
 		finHandCount = testG.handCount[thisPlayer];
@@ -115,12 +112,13 @@ int main() {
 		
 		if(testCount == testPass) {
 			advPass++;
+			printf("Test #%d passed!\n", n);
 		}
 		else {
 			advFail++;
+			printf("Test #%d failed!\n", n);
 		}
 		
 	}
-	printf("122\n");
 	printf("Out of %d tests -> Pass:  %d, Fail:  %d\n", 2000, advPass, advFail);
 }
