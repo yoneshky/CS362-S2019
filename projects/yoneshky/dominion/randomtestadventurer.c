@@ -26,7 +26,7 @@ int main() {
 	
 	for(n = 0; n < 2000; n++) {
 		
-		printf("Executing test: %d\n", n);
+		printf("Executing test: %d\n", n+1);
 		int seed = 1000;
 		int numPlayers = rand()%4 + 1;
 		int thisPlayer = 0;
