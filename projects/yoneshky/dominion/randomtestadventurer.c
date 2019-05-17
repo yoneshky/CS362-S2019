@@ -15,10 +15,11 @@
 #include <string.h>
 
 int main() {
+			printf("Hello");
 	int n;
 	int advPass = 0;
 	int advFail = 0;
-
+		printf("Hello");
 	
 	int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
 	
