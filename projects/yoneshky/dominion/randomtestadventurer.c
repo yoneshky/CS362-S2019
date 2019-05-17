@@ -14,10 +14,10 @@
 #include <stdio.h>
 
 int main() {
-	int i, j, k, advPass = 0, testPass = 0, advFail = 0, initTreasure = 0, postTreasure = 0, treasureCount = 0;
+	int i, j, n, advPass = 0, testPass = 0, advFail = 0, initTreasure = 0, postTreasure = 0, treasureCount = 0;
 	int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
 	
-	for(int k = 0; k < 2000; k++) {
+	for(int n = 0; n < 2000; n++) {
 		int seed = 1000;
 		int numPlayers = rand()%5;
 		int thisPlayer = 0;
