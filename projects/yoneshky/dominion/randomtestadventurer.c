@@ -14,16 +14,18 @@
 #include <assert.h>
 #include <string.h>
 
+#define TESTCARD "adventurer"
+
 int main() {
-			printf("Hello");
+	printf("Line 18");
 	int n;
 	int advPass = 0;
 	int advFail = 0;
-		printf("Hello");
+	printf("Line 22");
 	
 	int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
 	
-		printf("Hello");
+	printf("Line 26");
 	
 	for(n = 0; n < 2000; n++) {
 		int seed = 1000;
@@ -37,7 +39,7 @@ int main() {
 		//gamestate G and testG adapted from cardtest4.c provided by instructor
 		struct gameState G, testG;
 		initializeGame(numPlayers, k, seed, &G);
-		printf("Hello");
+		printf("Line 40");
 		//randomize hand and deck count of all players
 		for(i = 0; i < numPlayers; i++) {
 			G.deckCount[i] = rand() % MAX_DECK;
@@ -46,7 +48,7 @@ int main() {
 		memcpy(&testG, &G, sizeof(struct gameState));
 		adventurerEffect(&testG);
 		int testCount = 0;
-		printf("Hello");
+		printf("Line 49");
 		//test 2 treasure drawn
 		int card;
 		//treasure in hand count before adventurer
@@ -75,7 +77,7 @@ int main() {
 		int finHandCount = 0;
 		int initDeckCount = 0;
 		int finDeckCount = 0;
-		printf("Hello");
+		printf("Line 78");
 		//test hand count +1
 		initHandCount = G.handCount[thisPlayer];
 		finHandCount = testG.handCount[thisPlayer];
