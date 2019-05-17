@@ -23,6 +23,8 @@ int main() {
 	int advFail = 0;
 	
 	for(n = 0; n < 2000; n++) {
+		srand(time(NULL));
+		
 		printf("Executing test: %d\n", n);
 		int seed = 1000;
 		int numPlayers = rand()%4 + 1;
