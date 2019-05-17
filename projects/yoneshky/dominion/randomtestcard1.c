@@ -20,9 +20,9 @@
 int main() {
 	
 	int n;
-	int advPass = 0;
-	int advFail = 0;
-	
+	int smiPass = 0;
+	int smiFail = 0;
+	printf("--- RANDOM TEST ON SMITHY ---\n");
 	srand(time(NULL));
 	
 	for(n = 0; n < 2000; n++) {
@@ -111,16 +111,16 @@ int main() {
 		}
 		
 		if(testCount == testPass) {
-			advPass++;
+			smiPass++;
 			printf("Test #%d passed!\n", n+1);
 			printf("Tests Passed: %d, Test Count: %d \n", testPass, testCount);
 		}
 		else {
-			advFail++;
+			smiFail++;
 			printf("Test #%d failed!\n", n+1);
 			printf("Test Passed: %d, Test Count: %d \n", testPass, testCount);
 		}
 		
 	}
-	printf("Out of %d tests -> Pass:  %d, Fail:  %d\n", 2000, advPass, advFail);
+	printf("Out of %d tests -> Pass:  %d, Fail:  %d\n", 2000, smiPass, smiFail);
 }

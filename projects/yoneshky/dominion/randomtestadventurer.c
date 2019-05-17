@@ -23,7 +23,7 @@ int main() {
 	int advFail = 0;
 	
 	srand(time(NULL));
-	
+	printf("--- RANDOM TEST ON ADVENTURER ---\n");
 	for(n = 0; n < 2000; n++) {
 		
 		printf("--- Executing test: %d ---\n", n+1);
