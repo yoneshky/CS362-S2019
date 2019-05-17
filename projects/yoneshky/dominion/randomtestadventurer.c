@@ -45,6 +45,7 @@ int main() {
 		}
 		//treasure in hand count after adventurer
 		for(i = 0; i < testG.handCount[thisPlayer]; i++) {
+			printf("Executing test: %d\n", n);
 			card = testG.hand[thisPlayer][i];
 			if(card == copper || card == silver || card == gold) {
 				postTreasure++;
