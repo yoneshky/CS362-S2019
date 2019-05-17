@@ -25,7 +25,7 @@ int main() {
 	for(n = 0; n < 2000; n++) {
 		printf("Executing test: %d\n", n);
 		int seed = 1000;
-		int numPlayers = rand()%4;
+		int numPlayers = rand()%4 + 1;
 		int thisPlayer = 0;
 		int initTreasure = 0;
 		int postTreasure = 0;
