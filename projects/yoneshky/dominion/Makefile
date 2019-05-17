@@ -41,6 +41,20 @@ randomtestcard2: randomtestcard2.c dominion.o rngs.o
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
+randomtestresults: dominion.c
+	echo "Result for running random tests:" >> randomtestresults.out
+	echo "randomtestadventurer.c:" >> randomtestresults.out
+	./randomtestadventurer >> randomtestresults.out
+	gcov randomtestadventurer.c -b >> randomtestresults.out
+
+	echo "randomtestcard1.c:" >> randomtestresults.out
+	./randomtestcard1 >> randomtestresults.out
+	gcov randomtestcard1.c -b >> randomtestresults.out
+
+	echo "randomtestcard2.c:" >> randomtestresults.out
+	./randomtestcard2 >> randomtestresults.out
+	gcov randomtestcard2.c -b >> randomtestresults.out
+
 all: playdom player randomtestadventurer randomtestcard1 randomtestcard2
 
 clean:
