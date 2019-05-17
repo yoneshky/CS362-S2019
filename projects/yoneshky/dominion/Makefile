@@ -41,7 +41,7 @@ randomtestcard2: randomtestcard2.c dominion.o rngs.o
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-randomtestresults: dominion.c
+randomtestresults: randomtestadventurer.c randomtestcard1.c randomtestcard2.c
 	echo "Result for running random tests:" >> randomtestresults.out
 	echo "randomtestadventurer.c:" >> randomtestresults.out
 	./randomtestadventurer >> randomtestresults.out
