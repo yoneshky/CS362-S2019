@@ -27,7 +27,7 @@ int main() {
 	
 	for(n = 0; n < 2000; n++) {
 		int seed = 1000;
-		int numPlayers = rand()%5;
+		int numPlayers = rand()%4;
 		int thisPlayer = 0;
 		int initTreasure = 0;
 		int postTreasure = 0;
