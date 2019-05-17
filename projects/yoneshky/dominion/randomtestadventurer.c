@@ -106,7 +106,5 @@ int main() {
 	}
 	
 	printf("Out of %d tests -> Pass:  %d, Fail:  %d\n", 2000, advPass, advFail);
-	
-	free(G);
-	free(testG);
+
 }
