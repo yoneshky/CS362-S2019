@@ -42,8 +42,8 @@ int main() {
 		
 		//randomize hand and deck count of all players
 		for(i = 0; i < numPlayers; i++) {
-			G.deckCount[i] = rand() % MAX_DECK;
-			G.handCount[i] = rand() % MAX_HAND;
+			G.deckCount[i] = rand() % MAX_DECK +1;
+			G.handCount[i] = rand() % MAX_HAND +1;
 		}
 		memcpy(&testG, &G, sizeof(struct gameState));
 		adventurerEffect(&testG);
