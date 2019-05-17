@@ -14,7 +14,10 @@
 #include <stdio.h>
 
 int main() {
-	int i, j, n, advPass = 0, testPass = 0, advFail = 0, initTreasure = 0, postTreasure = 0, treasureCount = 0;
+	int n;
+	int advPass = 0;
+	int advFail = 0;
+
 	
 	int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
 	
@@ -24,6 +27,11 @@ int main() {
 		int seed = 1000;
 		int numPlayers = rand()%5;
 		int thisPlayer = 0;
+		int initTreasure = 0;
+		int postTreasure = 0;
+		int treasureCount = 0;
+		int testPass = 0;
+		int i, j;
 		//gamestate G and testG adapted from cardtest4.c provided by instructor
 		struct gameState G, testG;
 		initializeGame(numPlayers, k, seed, &G);
