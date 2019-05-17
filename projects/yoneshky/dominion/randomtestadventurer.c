@@ -22,7 +22,7 @@ int main() {
 	int advPass = 0;
 	int advFail = 0;
 	
-	for(n = 0; n < 10; n++) {
+	for(n = 0; n < 200; n++) {
 		printf("Executing test: %d\n", n);
 		int seed = 1000;
 		int numPlayers = rand()%4 + 1;
