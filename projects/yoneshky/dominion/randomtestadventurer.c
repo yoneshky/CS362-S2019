@@ -77,18 +77,18 @@ int main() {
 		int initDeckCount = 0;
 		int finDeckCount = 0;
 		
-		//test hand count +1
+		//test hand count +2
 		initHandCount = G.handCount[thisPlayer];
 		finHandCount = testG.handCount[thisPlayer];
-		if(finHandCount == initHandCount + 1) {
+		if(finHandCount == initHandCount + 2) {
 			testPass++;
 		}
 		testCount++;
 		
-		//test deck Count -2
+		//test deck Count less than starting
 		initDeckCount = G.deckCount[thisPlayer];
 		finDeckCount = testG.deckCount[thisPlayer];
-		if(finDeckCount == initDeckCount - 2) {
+		if(finDeckCount < initDeckCount) {
 			testPass++;
 		}
 		testCount++;
