@@ -46,8 +46,16 @@ int main() {
 			G.deckCount[i] = rand() % MAX_DECK +1;
 			G.handCount[i] = rand() % MAX_HAND +1;
 		}
+		
 		memcpy(&testG, &G, sizeof(struct gameState));
-		adventurerEffect(&testG);
+		
+		//mimic smithy draw to use hand pos for smithy effect
+		testG.hand[thisPlayer][testG.handCount[thisPlayer]] = smithy;
+		testG.handCount[thisPlayer]++;
+		G.hand[thisPlayer][G.handCount[thisPlayer]] = smithy;
+		G.handCount[thisPlayer]++;
+		
+    	smithyEffect(&testG, testG.handCount[thisPlayer] - 1);
 		int testCount = 0;
 		
 		//test 3 cards drawn
@@ -68,6 +76,19 @@ int main() {
 		initDeckCount = G.deckCount[thisPlayer];
 		finDeckCount = testG.deckCount[thisPlayer];
 		if(finDeckCount == initDeckCount - 3) {
+			testPass++;
+		}
+		testCount++;
+		
+		//test if smithy was discarded
+		//flag set if smithy is discarded properly
+		int smithyFlag = 0;
+		for(i = 0; i < testG.handCount[thisPlayer]; i++) {
+			if (testG.hand[thisPlayer][i] == smithy) {
+				smithyFlag = -1;
+			}
+		}
+		if(smithyFlag < 0) {
 			testPass++;
 		}
 		testCount++;
