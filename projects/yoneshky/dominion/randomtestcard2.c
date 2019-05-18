@@ -60,7 +60,7 @@ int main() {
 		cardEffect(village, choice1, choice2, choice3, &testG, testG.handCount[thisPlayer]-1, 0);
 		int testCount = 0;
 		
-		//test 3 cards drawn
+		//test 1 cards drawn
 		int initHandCount = 0;
 		int finHandCount = 0;
 		int initDeckCount = 0;
