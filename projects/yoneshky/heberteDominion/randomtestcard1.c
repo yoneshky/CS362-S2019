@@ -55,7 +55,7 @@ int main() {
 		G.hand[thisPlayer][G.handCount[thisPlayer]] = smithy;
 		G.handCount[thisPlayer]++;
 		
-    	smithyEffect(&testG, testG.handCount[thisPlayer] - 1);
+		cardEffect(smithy, 0, 0, 0, &testG, testG.handCount[thisPlayer]-1, 0);;
 		int testCount = 0;
 		
 		//test 3 cards drawn

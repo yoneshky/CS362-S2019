@@ -17,7 +17,6 @@
 #define TESTCARD "adventurer"
 
 int main() {
-
 	int n;
 	int advPass = 0;
 	int advFail = 0;
@@ -49,7 +48,8 @@ int main() {
 			G.handCount[i] = rand() % MAX_HAND +1;
 		}
 		memcpy(&testG, &G, sizeof(struct gameState));
-		adventurerEffect(&testG);
+		//adventurerEffect(&testG);
+		cardEffect(adventurer, 0, 0, 0, &testG, testG.handCount[thisPlayer]-1, 0);
 		int testCount = 0;
 		
 		//test 2 treasure drawn

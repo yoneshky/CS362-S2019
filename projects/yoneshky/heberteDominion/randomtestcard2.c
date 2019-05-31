@@ -26,7 +26,7 @@ int main() {
 	srand(time(NULL));
 	printf("--- RANDOM TEST ON VILLAGE ---\n");
 	for(n = 0; n < 2000; n++) {
-
+		
 		printf("--- Executing test: %d ---\n", n+1);
 		int seed = 1000;
 		int numPlayers = rand()%4 + 1;

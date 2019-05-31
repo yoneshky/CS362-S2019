@@ -40,22 +40,22 @@ void assertlessequals(int x, int y) {
 }
 
 int main() {
-    int i, j, m;
+	int i, j, m;
 	int choice1, choice2, choice3;
 	int *bonus;
-    int seed = 1000;
-    int numPlayers = 2;
-    int thisPlayer = 0;
-    //gamestate G and testG adapted from cardtest4.c provided by instructor
-    struct gameState G, testG, testG1, testG2, testG3;
-    
-    int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
-    
-    initializeGame(numPlayers, k, seed, &G);
-    memcpy(&testG, &G, sizeof(struct gameState));
-    printf("--- Card Test On: %s ---\n", TESTCARD);
-    
-
+	int seed = 1000;
+	int numPlayers = 2;
+	int thisPlayer = 0;
+	//gamestate G and testG adapted from cardtest4.c provided by instructor
+	struct gameState G, testG, testG1, testG2, testG3;
+	
+	int k[10] = {adventurer, smithy, council_room, feast, mine, remodel, village, baron, great_hall, minion};
+	
+	initializeGame(numPlayers, k, seed, &G);
+	memcpy(&testG, &G, sizeof(struct gameState));
+	printf("--- Card Test On: %s ---\n", TESTCARD);
+	
+	
 	//negative test on wrong hand position provided to cardEFfect
 	testG.hand[thisPlayer][testG.handCount[thisPlayer]] = adventurer;
 	testG.handCount[thisPlayer]++;
@@ -78,7 +78,7 @@ int main() {
 	if(advFlag >= 0) {
 		printf("Adventurer properly discarded, test failed!\n");
 	}
-
+	
 	printf("--- Boundary test On Deck with different Treasure Counts ---\n");
 	printf("--- Deck has 2 Treasure ---\n");
 	memcpy(&testG1, &G, sizeof(struct gameState));
@@ -134,7 +134,7 @@ int main() {
 		printf("Test Failed\n");
 	}
 	
-    printf("--- Card Test 1 Complete! ---\n");
-    
-    return 0;
+	printf("--- Card Test 1 Complete! ---\n");
+	
+	return 0;
 }
