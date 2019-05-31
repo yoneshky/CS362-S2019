@@ -62,8 +62,6 @@ int main() {
 	
 	adventurerCard(drawntreasure, &testG, thisPlayer, temphand, z);
 	
-	
-	
 	//initial treasure in hand count
 	int initTreasureCount = 0;
 	int initCards;

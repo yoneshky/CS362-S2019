@@ -130,6 +130,16 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 
 
 //prototype functions for refactored code
+int adventurerCard(int drawntreasure, struct gameState *state, int currentPlayer, int *temphand, int z);
+
+int smithyCard(int currentPlayer, struct gameState *state, int handPos);
+
+int minionCard(struct gameState *state, int handPos, int currentPlayer, int choice1, int choice2);
+
+int cutpurseCard(struct gameState *state, int currentPlayer, int handPos);
+
+int council_roomCard(struct gameState *state, int currentPlayer, int handPos);
+
 int adventurerEffect(struct gameState *state);
 
 int smithyEffect(struct gameState *state, int handPos) ;
