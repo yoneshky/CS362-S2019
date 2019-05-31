@@ -41,21 +41,79 @@ randomtestcard2: randomtestcard2.c dominion.o rngs.o
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-randomtestresults: randomtestadventurer.c randomtestcard1.c randomtestcard2.c
-	echo "Result for running random tests:" >> randomtestresults.out
-	echo "randomtestadventurer.c:" >> randomtestresults.out
-	./randomtestadventurer >> randomtestresults.out
-	gcov randomtestadventurer.c -b >> randomtestresults.out
+unittest1: unittest1.c dominion.o rngs.o
+	gcc -o unittest1 unittest1.c -g  dominion.o rngs.o $(CFLAGS)
 
-	echo "randomtestcard1.c:" >> randomtestresults.out
-	./randomtestcard1 >> randomtestresults.out
-	gcov randomtestcard1.c -b >> randomtestresults.out
+unittest2: unittest2.c dominion.o rngs.o
+	gcc -o unittest2 unittest2.c -g  dominion.o rngs.o $(CFLAGS)
 
-	echo "randomtestcard2.c:" >> randomtestresults.out
-	./randomtestcard2 >> randomtestresults.out
-	gcov randomtestcard2.c -b >> randomtestresults.out
+unittest3: unittest3.c dominion.o rngs.o
+	gcc -o unittest3 unittest3.c -g  dominion.o rngs.o $(CFLAGS)
 
-all: playdom player randomtestadventurer randomtestcard1 randomtestcard2
+unittest4: unittest4.c dominion.o rngs.o
+	gcc -o unittest4 unittest4.c -g  dominion.o rngs.o $(CFLAGS)
+
+cardtest1: cardtest1.c dominion.o rngs.o
+	gcc -o cardtest1 cardtest1.c -g  dominion.o rngs.o $(CFLAGS)
+
+cardtest2: cardtest2.c dominion.o rngs.o
+	gcc -o cardtest2 cardtest2.c -g  dominion.o rngs.o $(CFLAGS)
+
+cardtest3: cardtest3.c dominion.o rngs.o
+	gcc -o cardtest3 cardtest3.c -g  dominion.o rngs.o $(CFLAGS)
+
+cardtest4: cardtest4.c dominion.o rngs.o
+	gcc -o cardtest4 cardtest4.c -g  dominion.o rngs.o $(CFLAGS)
+
+default: assignment5testresults.out
+
+afivetestresults: dominion.c
+	echo "Result for running Assignment 5 tests:" >> assignment5testresults.out
+	echo "unittest1.c:" >> assignment5testresults.out
+	./unittest1 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "unittest2.c:" >> assignment5testresults.out
+	./unittest2 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "unittest3.c:" >> assignment5testresults.out
+	./unittest3 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "unittest4.c:" >> assignment5testresults.out
+	./unittest4 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "cardtest1.c:" >> assignment5testresults.out
+	./cardtest1 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "cardtest2.c:" >> assignment5testresults.out
+	./cardtest2 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "cardtest3.c:" >> assignment5testresults.out
+	./cardtest3 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "cardtest4.c:" >> assignment5testresults.out
+	./cardtest4 >> assignment5testresults.out
+	gcov dominion.c -b >> assignment5testresults.out
+
+	echo "randomtestadventurer.c:" >> assignment5testresults.out
+	./randomtestadventurer >> assignment5testresults.out
+	gcov randomtestadventurer.c -b >> assignment5testresults.out
+
+	echo "randomtestcard1.c:" >> assignment5testresults.out
+	./randomtestcard1 >> assignment5testresults.out
+	gcov randomtestcard1.c -b >> assignment5testresults.out
+
+	echo "randomtestcard2.c:" >> assignment5testresults.out
+	./randomtestcard2 >> assignment5testresults.out
+	gcov randomtestcard2.c -b >> assignment5testresults.out
+
+all: playdom player randomtestadventurer randomtestcard1 randomtestcard2 unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe randomtestadventurer randomtestadventurer.exe randomtestcard1 randomtestcard1.exe randomtestcard2 randomtestcard2.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest1.exe unittest2 unittest2.exe unittest3 unittest3.exe unittest4 unittest4.exe cardtest1 cardtest1.exe cardtest2 cardtest2.exe cardtest3 cardtest3.exe cardtest4 cardtest4.exe randomtestadventurer randomtestadventurer.exe randomtestcard1 randomtestcard1.exe randomtestcard2 randomtestcard2.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
