@@ -75,15 +75,15 @@ afivetestresults: dominion.c unittest1.c unittest2.c cardtest1.c cardtest2.c ran
 
 	echo "unittest2.c:" >> assignment5testresults.out
 	./unittest2 >> assignment5testresults.out
-	gcov dominion.c -b >> assignment5testresults.out
+	gcov unittest2.c -b >> assignment5testresults.out
 
 	echo "cardtest1.c:" >> assignment5testresults.out
 	./cardtest1 >> assignment5testresults.out
-	gcov dominion.c -b >> assignment5testresults.out
+	gcov cardtest1.c -b >> assignment5testresults.out
 
 	echo "cardtest2.c:" >> assignment5testresults.out
 	./cardtest2 >> assignment5testresults.out
-	gcov dominion.c -b >> assignment5testresults.out
+	gcov cardtest2.c -b >> assignment5testresults.out
 
 	echo "randomtestadventurer.c:" >> assignment5testresults.out
 	./randomtestadventurer >> assignment5testresults.out
