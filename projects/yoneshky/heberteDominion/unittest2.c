@@ -68,7 +68,7 @@ int main() {
 	int finHandCount = testG.handCount[thisPlayer];
 	
 	printf("Hand count = %d, expected = %d\n", finHandCount, initHandCount + 2);
-	asserttrue(initHandCount, finHandCount);
+	asserttrue(initHandCount+2, finHandCount);
 	
 	printf("--- Testing Deck Count is 3 less than starting ---\n");
 	

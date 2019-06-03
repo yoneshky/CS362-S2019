@@ -67,11 +67,11 @@ cardtest4: cardtest4.c dominion.o rngs.o
 
 default: assignment5testresults.out
 
-afivetestresults: dominion.c
+afivetestresults: dominion.c unittest1.c unittest2.c cardtest1.c cardtest2.c randomtestadventurer.c randomtestcard1.c
 	echo "Result for running Assignment 5 tests:" >> assignment5testresults.out
 	echo "unittest1.c:" >> assignment5testresults.out
 	./unittest1 >> assignment5testresults.out
-	gcov dominion.c -b >> assignment5testresults.out
+	gcov unittest1.c -b >> assignment5testresults.out
 
 	echo "unittest2.c:" >> assignment5testresults.out
 	./unittest2 >> assignment5testresults.out
@@ -93,7 +93,7 @@ afivetestresults: dominion.c
 	./randomtestcard1 >> assignment5testresults.out
 	gcov randomtestcard1.c -b >> assignment5testresults.out
 
-all: playdom player randomtestadventurer randomtestcard1 randomtestcard2 unittest1 unittest2 cardtest1 cardtest2
+all: playdom player randomtestadventurer randomtestcard1 unittest1 unittest2 cardtest1 cardtest2
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest1.exe unittest2 unittest2.exe cardtest1 cardtest1.exe cardtest2 cardtest2.exe randomtestadventurer randomtestadventurer.exe randomtestcard1 randomtestcard1.exe randomtestcard2 randomtestcard2.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest1.exe unittest2 unittest2.exe cardtest1 cardtest1.exe cardtest2 cardtest2.exe randomtestadventurer randomtestadventurer.exe randomtestcard1 randomtestcard1.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
