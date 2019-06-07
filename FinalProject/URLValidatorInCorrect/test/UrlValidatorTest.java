@@ -1,4 +1,3 @@
-
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -16,17 +15,11 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD
-
-=======
 import java.io.BufferedReader;
->>>>>>> ProjectPartB-UnitTests
 
 import junit.framework.TestCase;
 import java.io.FileReader;
 import java.io.IOException;
-
-
 
 
 /**
@@ -35,7 +28,6 @@ import java.io.IOException;
  * @version $Revision$
  */
 public class UrlValidatorTest extends TestCase {
-
 
    private final boolean printStatus = false;
    private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
@@ -52,6 +44,7 @@ protected void setUp() {
    }
    
    public void testUnit( ) {
+	   System.out.println("--- Executing Unit Tests ---");
 	   //file reader adapted from https://www.journaldev.com/709/java-read-file-line-by-line
 	   BufferedReader reader;
 	   try {
@@ -67,9 +60,11 @@ protected void setUp() {
 			  UrlValidator urlValidator = new UrlValidator(null, null, options);
 			boolean result = urlValidator.isValid(line);
 			  if(result) {
+				   assertTrue(urlValidator.isValid(line));
 				   System.out.println("Passed");
 			  }
 			  else {
+				  assertFalse(urlValidator.isValid(line));
 				  System.out.println("Failed");
 			  }
 
@@ -104,8 +99,6 @@ protected void setUp() {
         
         
    }
-   
-
 
    public void testIsValidScheme() {
       if (printStatus) {
@@ -656,10 +649,9 @@ protected void setUp() {
                             new ResultPair("not_valid", false), // underscore not allowed
                             new ResultPair("HtTp", true),
                             new ResultPair("telnet", false)};
-
-
-
-public void testrandom() {
+   
+   public void testrandom() {
+	   System.out.println("--- Executing Random Tests ---");
 	   String url;
 	   boolean flag;
 	   boolean result;
