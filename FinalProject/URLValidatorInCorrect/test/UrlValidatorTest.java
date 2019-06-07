@@ -693,8 +693,6 @@ protected void setUp() {
 		   }
 		   
 		   result = urlVal.isValid(url);
-		   System.out.println(url);
-		   System.out.println("Expected: "+flag+" Result: "+result);
 		   assertEquals(url, result, flag);
 
 	   }
