@@ -16,9 +16,16 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD
 
+=======
+import java.io.BufferedReader;
+>>>>>>> ProjectPartB-UnitTests
 
 import junit.framework.TestCase;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 
 
@@ -43,7 +50,48 @@ protected void setUp() {
          testPartsIndex[index] = 0;
       }
    }
+   
+   public void testUnit( ) {
+	   //file reader adapted from https://www.journaldev.com/709/java-read-file-line-by-line
+	   BufferedReader reader;
+	   try {
+		   reader = new BufferedReader(new FileReader("unittest.txt"));
+		   String line = reader.readLine();
+		   while (line != null) {
+			   System.out.println(line);
+			   long options =
+			            UrlValidator.ALLOW_2_SLASHES
+		                + UrlValidator.ALLOW_ALL_SCHEMES
+		                + UrlValidator.NO_FRAGMENTS;
+			  
+			  UrlValidator urlValidator = new UrlValidator(null, null, options);
+			boolean result = urlValidator.isValid(line);
+			  if(result) {
+				   System.out.println("Passed");
+			  }
+			  else {
+				  System.out.println("Failed");
+			  }
 
+			   
+			   line = reader.readLine();
+		   }
+		   reader.close();
+	   } catch (IOException e) {
+		   e.printStackTrace();
+	   }
+   }
+   
+   public void unitTestIsValid() {
+       setUp();
+       long options =
+           UrlValidator.ALLOW_2_SLASHES
+               + UrlValidator.ALLOW_ALL_SCHEMES
+               + UrlValidator.NO_FRAGMENTS;
+
+	   UrlValidator urlVal = new UrlValidator(null, null, options);
+   }
+   
    public void testIsValid() {
         testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);
         setUp();
@@ -53,6 +101,8 @@ protected void setUp() {
                 + UrlValidator.NO_FRAGMENTS;
 
         testIsValid(testUrlPartsOptions, options);
+        
+        
    }
    
 
