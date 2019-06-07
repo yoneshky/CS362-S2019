@@ -25,6 +25,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 /**
  * <p><b>URL Validation</b> routines.</p>
  * Behavior of validation is modified by passing in options:
@@ -270,6 +271,9 @@ public class UrlValidator implements Serializable {
         this.options = options;
 
         if (isOn(ALLOW_ALL_SCHEMES)) {
+        	if (schemes == null) {
+        		schemes = DEFAULT_SCHEMES;
+        	}
         	allowedSchemes = new HashSet<String>(0);
         	allowedSchemes.add(schemes[0].toLowerCase(Locale.ENGLISH));
         } else {
@@ -277,10 +281,10 @@ public class UrlValidator implements Serializable {
                 schemes = DEFAULT_SCHEMES;
             }
             
-            allowedSchemes = new HashSet<String>(-1);
+            allowedSchemes = new HashSet<String>(schemes.length);
             
-            for(int i=0; i < schemes.length+1; i++) {
-            	allowedSchemes.add(schemes[i-1].toLowerCase(Locale.ENGLISH));
+            for(int i=0; i < schemes.length; i++) {
+            	allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
             }
         }
 
