@@ -15,7 +15,12 @@
  * limitations under the License.
  */
 
+import java.io.BufferedReader;
+
 import junit.framework.TestCase;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 /**
  * Performs Validation Test for url validations.
@@ -37,7 +42,48 @@ protected void setUp() {
          testPartsIndex[index] = 0;
       }
    }
+   
+   public void testUnit( ) {
+	   //file reader adapted from https://www.journaldev.com/709/java-read-file-line-by-line
+	   BufferedReader reader;
+	   try {
+		   reader = new BufferedReader(new FileReader("unittest.txt"));
+		   String line = reader.readLine();
+		   while (line != null) {
+			   System.out.println(line);
+			   long options =
+			            UrlValidator.ALLOW_2_SLASHES
+		                + UrlValidator.ALLOW_ALL_SCHEMES
+		                + UrlValidator.NO_FRAGMENTS;
+			  
+			  UrlValidator urlValidator = new UrlValidator(null, null, options);
+			boolean result = urlValidator.isValid(line);
+			  if(result) {
+				   System.out.println("Passed");
+			  }
+			  else {
+				  System.out.println("Failed");
+			  }
 
+			   
+			   line = reader.readLine();
+		   }
+		   reader.close();
+	   } catch (IOException e) {
+		   e.printStackTrace();
+	   }
+   }
+   
+   public void unitTestIsValid() {
+       setUp();
+       long options =
+           UrlValidator.ALLOW_2_SLASHES
+               + UrlValidator.ALLOW_ALL_SCHEMES
+               + UrlValidator.NO_FRAGMENTS;
+
+	   UrlValidator urlVal = new UrlValidator(null, null, options);
+   }
+   
    public void testIsValid() {
         testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);
         setUp();
@@ -47,6 +93,8 @@ protected void setUp() {
                 + UrlValidator.NO_FRAGMENTS;
 
         testIsValid(testUrlPartsOptions, options);
+        
+        
    }
 
    public void testIsValidScheme() {
@@ -334,7 +382,7 @@ protected void setUp() {
     static boolean incrementTestPartsIndex(int[] testPartsIndex, Object[] testParts) {
       boolean carry = true;  //add 1 to lowest order part.
       boolean maxIndex = true;
-      for (int testPartsIndexIndex = testPartsIndex.length; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
+      for (int testPartsIndexIndex = testPartsIndex.length-1; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
           int index = testPartsIndex[testPartsIndexIndex];
          ResultPair[] part = (ResultPair[]) testParts[testPartsIndexIndex];
          maxIndex &= (index == (part.length - 1));
