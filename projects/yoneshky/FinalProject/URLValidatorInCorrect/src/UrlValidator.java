@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -14,6 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+=======
+
+
+
+
+>>>>>>> ProjectPartB-RandomTests
 
 import java.io.Serializable;
 import java.net.URI;
@@ -25,6 +32,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ProjectPartB-RandomTests
 /**
  * <p><b>URL Validation</b> routines.</p>
  * Behavior of validation is modified by passing in options:
@@ -270,6 +281,12 @@ public class UrlValidator implements Serializable {
         this.options = options;
 
         if (isOn(ALLOW_ALL_SCHEMES)) {
+<<<<<<< HEAD
+=======
+        	if (schemes == null) {
+        		schemes = DEFAULT_SCHEMES;
+        	}
+>>>>>>> ProjectPartB-RandomTests
         	allowedSchemes = new HashSet<String>(0);
         	allowedSchemes.add(schemes[0].toLowerCase(Locale.ENGLISH));
         } else {
@@ -277,10 +294,17 @@ public class UrlValidator implements Serializable {
                 schemes = DEFAULT_SCHEMES;
             }
             
+<<<<<<< HEAD
             allowedSchemes = new HashSet<String>(-1);
             
             for(int i=0; i < schemes.length+1; i++) {
             	allowedSchemes.add(schemes[i-1].toLowerCase(Locale.ENGLISH));
+=======
+            allowedSchemes = new HashSet<String>(schemes.length);
+            
+            for(int i=0; i < schemes.length; i++) {
+            	allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
+>>>>>>> ProjectPartB-RandomTests
             }
         }
 
