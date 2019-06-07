@@ -1,3 +1,4 @@
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -15,7 +16,11 @@
  * limitations under the License.
  */
 
+
+
 import junit.framework.TestCase;
+
+
 
 /**
  * Performs Validation Test for url validations.
@@ -23,6 +28,7 @@ import junit.framework.TestCase;
  * @version $Revision$
  */
 public class UrlValidatorTest extends TestCase {
+
 
    private final boolean printStatus = false;
    private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
@@ -48,6 +54,8 @@ protected void setUp() {
 
         testIsValid(testUrlPartsOptions, options);
    }
+   
+
 
    public void testIsValidScheme() {
       if (printStatus) {
@@ -92,16 +100,16 @@ protected void setUp() {
           StringBuilder testBuffer = new StringBuilder();
          boolean expected = true;
          
-         for (int testPartsIndexIndex = 0; testPartsIndexIndex < 0; ++testPartsIndexIndex) {
+         for (int testPartsIndexIndex = 0; testPartsIndexIndex < testPartsIndex.length; ++testPartsIndexIndex) {
             int index = testPartsIndex[testPartsIndexIndex];
             
-            ResultPair[] part = (ResultPair[]) testObjects[-1];
+            ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
             testBuffer.append(part[index].item);
             expected &= part[index].valid;
          }
          String url = testBuffer.toString();
          
-         boolean result = !urlVal.isValid(url);
+         boolean result = urlVal.isValid(url);
          assertEquals(url, expected, result);
          if (printStatus) {
             if (printIndex) {
@@ -334,14 +342,14 @@ protected void setUp() {
     static boolean incrementTestPartsIndex(int[] testPartsIndex, Object[] testParts) {
       boolean carry = true;  //add 1 to lowest order part.
       boolean maxIndex = true;
-      for (int testPartsIndexIndex = testPartsIndex.length; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
+      for (int testPartsIndexIndex = testPartsIndex.length-1; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
           int index = testPartsIndex[testPartsIndexIndex];
          ResultPair[] part = (ResultPair[]) testParts[testPartsIndexIndex];
          maxIndex &= (index == (part.length - 1));
          
          if (carry) {
             if (index < part.length - 1) {
-            	index--;
+            	index++;
                testPartsIndex[testPartsIndexIndex] = index;
                carry = false;
             } else {
@@ -600,4 +608,53 @@ protected void setUp() {
                             new ResultPair("telnet", false)};
 
 
+
+public void testrandom() {
+	   String url;
+	   boolean flag;
+	   boolean result;
+	   int scheme, auth, port, path, query;
+	   long options =
+	           UrlValidator.ALLOW_ALL_SCHEMES
+	               + UrlValidator.NO_FRAGMENTS;
+	   UrlValidator urlVal = new UrlValidator(options);
+	   
+	   for(int i = 0; i < 5000; i++) {
+		   flag = true;
+		   scheme = (int)(Math.random()*8);
+		   auth = (int)(Math.random()*20);
+		   port = (int)(Math.random()*9);
+		   path = (int)(Math.random()*10);
+		   query = (int)(Math.random()*3);
+		   
+		   url = new String(testUrlScheme[scheme].item);
+		   url = url.concat(testUrlAuthority[auth].item);
+		   url = url.concat(testUrlPort[port].item);
+		   url = url.concat(testPath[path].item);
+		   url = url.concat(testUrlQuery[query].item);
+		   
+		   
+		   if (testUrlScheme[scheme].valid == false) {
+			   flag = false;
+		   }
+		   if (testUrlAuthority[auth].valid == false) {
+			   flag = false;
+		   }
+		   if (testUrlPort[port].valid == false) {
+			   flag = false;
+		   }
+		   if (testPath[path].valid == false) {
+			   flag = false;
+		   }
+		   if (testUrlQuery[query].valid == false) {
+			   flag = false;
+		   }
+		   
+		   result = urlVal.isValid(url);
+		   System.out.println(url);
+		   System.out.println("Expected: "+flag+" Result: "+result);
+		   assertEquals(url, result, flag);
+
+	   }
+	}
 }
